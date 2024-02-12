@@ -3,9 +3,13 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
-    <RootNamespace>C__.Net_Bootcamp_3_oy</RootNamespace>
+    <RootNamespace>_43_Homeworkk</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Npgsql" Version="8.0.2" />
+  </ItemGroup>
 
 </Project>

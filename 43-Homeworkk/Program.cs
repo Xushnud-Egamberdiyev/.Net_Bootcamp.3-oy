@@ -1,10 +1,12 @@
-﻿namespace C__.Net_Bootcamp_3_oy
+﻿namespace _43_Homeworkk
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            var homework = new Homework();
+          
+           
         }
     }
 }
