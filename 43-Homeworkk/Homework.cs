@@ -1,9 +1,12 @@
 ﻿using Npgsql;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Npgsql.Replication.PgOutput.Messages.RelationMessage;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace _43_Homeworkk
 {
@@ -14,84 +17,80 @@ namespace _43_Homeworkk
         public NpgsqlCommand command { get; set; }
         public Homework()
         {
-            const string connectionstring = "Server=127.0.0.1;Port=5432;Database=Homework;username=postgres;Password=xushnud;";
+            const string connectionstring = "Server=127.0.0.1;Port=5432;Database=MongoDb;username=postgres;Password=xushnud;";
 
             connection = new NpgsqlConnection(connectionstring);
         }
-        //1
-        public void CreateTable(string tableName, string column1, string column2, string column3)
+        //1. Create Table qilish
+        public void Create_table(string TableName, string column1, string column2, string column3)
         {
             Open();
-            query = $"create table if not exists {tableName} ({column1}, {column2}, {column3})";
-            command = new NpgsqlCommand(query, connection);
-            Console.WriteLine(command.ExecuteNonQuery());
+            string query = $"Create table {TableName} ({column1}, {column2}, {column3})";
+            command =new NpgsqlCommand(query, connection);
+            command.ExecuteNonQuery();
             Close();
+
         }
 
-        //2
-        public void InsertTable(string tableName, params string[] values)
+        //2. Tablega insert qilish 1 ta danniy insert qilish
+        public void One_Insert(string Table_name, string column_name, string column_name2, string column_info, int column_info2)
         {
             Open();
-            query = $"insert into {tableName} values (";
-            foreach (var item in values)
-            {
-                query += $"{item},";
-            }
-            query += query.Remove(query.Length - 1) + ")";
+            string query = $"Insert into {Table_name}({column_name}, {column_name2}) values ('{column_info}', {column_info2})";
             command = new NpgsqlCommand(query, connection);
-            Console.WriteLine(command.ExecuteNonQuery());
-            Close();
+            command.ExecuteNonQuery();
         }
-        //3
-        public void InsertMany(string tableName, params string[] column)
+
+        //3. ko'pkina ma'lumotlarni insert qilish
+        public void Insert(string Table_name, IList<Darslar_info> info)
         {
             Open();
-            query = $"insert into {tableName} (name, age) values";
-            foreach (var item in column)
+            query = $"insert into {Table_name} (mavzu, student_count) values";
+            for (int i = 0; i < info.Count; i++)
             {
-                query += $"({item}),";
+                query += $@"('{info[i].mavzu}', {info[i].student_count}),";
             }
             query = query.Remove(query.Length - 1);
             command = new NpgsqlCommand(query, connection);
             command.ExecuteNonQuery();
             Close();
+
         }
-        //4
-        public void GetAll(string tableName)
+
+        //4. GetAll qilib ma'lumotlarni ko'rvolish
+        public void GetAll(string table_name)
         {
             Open();
-            query = $"select * from {tableName}";
-            command = new NpgsqlCommand(query, connection);
-            NpgsqlDataReader? data = command.ExecuteReader();
-            int tableCount = data.FieldCount;
-            while (data.Read())
+            query = $"select * from {table_name}";
+            command = new NpgsqlCommand(query , connection);
+            NpgsqlDataReader reader = command.ExecuteReader();
+            while(reader.Read())
             {
-                string? columnName = string.Empty;
-                for (int i = 0; i < tableCount; i++)
+                int tableCount = reader.FieldCount;
+                while (reader.Read())
                 {
-                    columnName += $"{data[i]} ";
+                    string? columnName = string.Empty;
+                    for (int i = 0; i < tableCount; i++)
+                    {
+                        columnName += $"{reader[i]} ";
+                    }
+                    Console.WriteLine(columnName);
                 }
-                Console.WriteLine(columnName);
             }
             Close();
         }
-        //5
-        public void GetById(string tableName, int id)
+
+        //5. GetById qilib qaysidur Id siga tengini topib kelish
+        public void GetById(string table_name, int id)
         {
             Open();
-            query = $"select * from {tableName}\nwhere id = 2";
-            command = new NpgsqlCommand(query, connection);
-            NpgsqlDataReader? data = command.ExecuteReader();
-            int tableCount = data.FieldCount;
-            string? columnName = string.Empty;
-            for (int i = 0; i < tableCount; i++)
-            {
-                columnName += $"{data[i]} ";
-            }
-            Console.WriteLine(columnName);
+            query = $"select * from {table_name}\nwhere id = {id}";
+            command = new NpgsqlCommand (query , connection);
+            command.ExecuteNonQuery();
             Close();
         }
-        //6.Delete qilish.
+
+        //6. Delete qilish.
         public void Delete(string tableName, int id)
         {
             Open();
@@ -103,7 +102,8 @@ namespace _43_Homeworkk
             }
             Close();
         }
-        //7
+
+        //7.Update for id column.
         public void UpdateById(int id, string name, int age)
         {
             Open();
@@ -112,7 +112,7 @@ namespace _43_Homeworkk
             Console.WriteLine(command.ExecuteNonQuery());
             Close();
         }
-        //8
+        //8.Update for name column.
         public void UpdateByName(string target, string name, int age)
         {
             Open();
@@ -121,7 +121,7 @@ namespace _43_Homeworkk
             Console.WriteLine(command.ExecuteNonQuery());
             Close();
         }
-        //9
+        //9.Get qilish LIKE text(column) ichidan search qilib opkelish
         public void GetLike(string like)
         {
             Open();
@@ -134,7 +134,7 @@ namespace _43_Homeworkk
             }
             Close();
         }
-        //10
+        //10.yangi column qo'shish
         public void AddColumn(string tableName, string columnNameWithType)
         {
             Open();
@@ -143,7 +143,7 @@ namespace _43_Homeworkk
             Console.WriteLine(command.ExecuteNonQuery());
             Close();
         }
-        //11
+        //11.yangi colummni default qiymati bilan qo'shish
         public void AddColumnDefault(string tableName, string columnName, string type, string defaultValue)
         {
             Open();
@@ -152,7 +152,7 @@ namespace _43_Homeworkk
             Console.WriteLine(command.ExecuteNonQuery());
             Close();
         }
-        //12
+        //12.columnni nomini update qilish
         public void UpdateColumn(string tableName, string columnName, string newColumnName)
         {
             Open();
@@ -161,7 +161,7 @@ namespace _43_Homeworkk
             Console.WriteLine(command.ExecuteNonQuery());
             Close();
         }
-        //13
+        //13.Tableni nomini update qilish.
         public void UpdateTable(string tableName, string newTableName)
         {
             Open();
@@ -170,7 +170,7 @@ namespace _43_Homeworkk
             Console.WriteLine(command.ExecuteNonQuery());
             Close();
         }
-        //14
+        //14.Yo'g' database bor silar shu yangitdan yaratishilar kerak va uni ichiga 3 dona table yaratamiz.
         public void CreateDatabase(string databaseName, params string[] tableNames)
         {
             Open();
@@ -183,7 +183,7 @@ namespace _43_Homeworkk
             Console.WriteLine(command.ExecuteNonQuery());
             Close();
         }
-        //15
+        //15.Truncate qilish.
         public void Truncate(string tableName)
         {
             Open();
@@ -192,7 +192,7 @@ namespace _43_Homeworkk
             Console.WriteLine(command.ExecuteNonQuery());
             Close();
         }
-        //16
+        //16.Join qilib ko'rish. 2 ta tableni join qilib ko'rish.
         public void Join(string tableName, string secondTableName, string column1, string column2)
         {
             Open();
@@ -205,7 +205,7 @@ namespace _43_Homeworkk
             }
             Close();
         }
-        //17
+        //17.Index qo'shamiz.
         public void Index(string tableName, params string[] columns)
         {
             Open();
@@ -219,7 +219,8 @@ namespace _43_Homeworkk
             Console.WriteLine(command.ExecuteNonQuery());
             Close();
         }
-        // Open database
+
+
         private void Open()
         {
             connection.Open();
