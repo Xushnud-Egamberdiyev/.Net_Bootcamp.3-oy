@@ -14,7 +14,7 @@ namespace _43_Homeworkk
         public NpgsqlCommand command { get; set; }
         public Homework()
         {
-            const string connectionstring = "Server=127.0.0.1;Port=5432;Database=PgConnect;username=postgres;Password=xushnud;";
+            const string connectionstring = "Server=127.0.0.1;Port=5432;Database=Homework;username=postgres;Password=xushnud;";
 
             connection = new NpgsqlConnection(connectionstring);
         }
