@@ -19,11 +19,11 @@
 
             //homework.Insert("Darslar", datalar);
 
-            //homework.GetAll("Darslar");
+            homework.GetAll("Darslar");
 
             //homework.GetById("Darslar", 2);
 
-            homework.Delete("Darslar", 3);
+            //homework.Delete("Darslar", 3);
 
 
 

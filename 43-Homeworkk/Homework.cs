@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -57,27 +58,24 @@ namespace _43_Homeworkk
 
         }
 
-        //4. GetAll qilib ma'lumotlarni ko'rvolish
+        //4. GetAll qilib ma'lumotlarni ko'rvolish5
         public void GetAll(string table_name)
         {
-            Open();
-            query = $"select * from {table_name}";
-            command = new NpgsqlCommand(query , connection);
-            NpgsqlDataReader reader = command.ExecuteReader();
-            while(reader.Read())
+            string connectionstring = "Server=127.0.0.1;Port=5432;Database=MongoDb;username=postgres;Password=xushnud;";
+
+            using (var connection = new NpgsqlConnection(connectionstring))
             {
-                int tableCount = reader.FieldCount;
-                while (reader.Read())
+                string sql = $"Select * From {table_name}";
+                NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(sql, connection);
+
+                DataSet ds = new DataSet();
+                adapter.Fill(ds, table_name);
+
+                foreach (DataRow item in ds.Tables[$"{table_name}"].Rows)
                 {
-                    string? columnName = string.Empty;
-                    for (int i = 0; i < tableCount; i++)
-                    {
-                        columnName += $"{reader[i]} ";
-                    }
-                    Console.WriteLine(columnName);
+                    Console.WriteLine($"{item["mavzu"]}");
                 }
             }
-            Close();
         }
 
         //5. GetById qilib qaysidur Id siga tengini topib kelish
