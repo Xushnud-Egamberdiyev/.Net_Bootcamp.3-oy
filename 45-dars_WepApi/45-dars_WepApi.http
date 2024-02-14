@@ -1,0 +1,6 @@
+@_45_dars_WepApi_HostAddress = http://localhost:5222
+
+GET {{_45_dars_WepApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
