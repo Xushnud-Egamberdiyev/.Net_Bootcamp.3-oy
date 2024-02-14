@@ -1,0 +1,6 @@
+@_45_Wep_api_Dapper_HostAddress = http://localhost:5195
+
+GET {{_45_Wep_api_Dapper_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
