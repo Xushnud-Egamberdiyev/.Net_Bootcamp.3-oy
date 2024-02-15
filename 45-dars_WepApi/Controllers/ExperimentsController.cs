@@ -66,5 +66,33 @@ namespace _45_dars_WepApi.Controllers
             }
         }
 
+        [HttpDelete]
+        public string DeleteData(int id)
+        {
+            using( NpgsqlConnection connection = new NpgsqlConnection(connectionstring))
+            {
+                string query = $"Delete from darslar where id = {id}";
+                connection.Open();
+                NpgsqlCommand command =new NpgsqlCommand(query, connection);
+                command.ExecuteNonQuery();
+
+                return $"{id}-Idli malumot ochirildi";
+            }
+        }
+
+        [HttpPut]
+        public string UpdateData(int id, string mavzu)
+        {
+            using (NpgsqlConnection connection = new NpgsqlConnection(connectionstring))
+            {
+                string query = $"Update dars set mavzu = {mavzu} where id = {id}";
+                connection.Open();
+                NpgsqlCommand command = new NpgsqlCommand(query, connection);
+
+                return "Malumot yangilandi";
+                
+            }
+        }
+
     }
 }

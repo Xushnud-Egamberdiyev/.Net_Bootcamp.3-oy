@@ -49,5 +49,29 @@ namespace _45_Wep_api_Dapper.Controllers
             }
 
         }
+
+        [HttpPatch]
+        public int UpdatePatch(int  id,string mavzu)
+        {
+            string query = $"update darslar set mavzu = @mavzu where id = @id";
+            using (NpgsqlConnection connection = new NpgsqlConnection(connectionstring))
+            {
+                var x = connection.Execute(query, new { mavzu = mavzu, id = id });
+
+                return x;
+            }
+        }
+        [HttpDelete]
+        public int DeleteData(int id)
+        {
+            string query = $"Delete From darslar where id = @id";
+            using (NpgsqlConnection connection = new NpgsqlConnection(connectionstring))
+            {
+                var x = connection.Execute(query, new { id = id });
+
+                return x;
+            }
+
+        }
     }
 }
