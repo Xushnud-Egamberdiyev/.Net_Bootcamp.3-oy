@@ -1,8 +1,10 @@
 ﻿using _48_Najot_TalimApi.DTO;
 using _48_Najot_TalimApi.Models;
-using _48_Najot_TalimApi.MyPattern;
+using _48_Najot_TalimApi.MyRepository.StudentCrud;
+using _48_Najot_TalimApi.MyServises.StudentSrv;
 using Microsoft.AspNetCore.Mvc;
 using Npgsql;
+using System.Data.SqlTypes;
 
 namespace _48_Najot_TalimApi.Controllers
 {
@@ -10,81 +12,47 @@ namespace _48_Najot_TalimApi.Controllers
     [ApiController]
     public class StudentsController : ControllerBase
     {
-        private readonly Istudent _istudent;
-
-        public StudentsController(Istudent istudent)
+        public IStudentSrv _student;
+        public Istudent _crud;
+        public StudentsController(IStudentSrv studentSrv, Istudent istudent)
         {
-            _istudent = istudent;
+            _student = studentSrv;
+            _crud = istudent;
         }
-        [HttpGet]
-        public IActionResult GetAllStudent()
-        {
-            try
-            {
-                var response = _istudent.GetAllStudents();
-                return Ok(response);
-
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
-
         [HttpPost]
-        public IActionResult CreateStudent(StudentDTO studentDTO)
+        public string CreateStudent(StudentDTO studentDTO)
         {
-            try
-            {
-                var response = _istudent.CreateStudent(studentDTO);
-                return Ok(response);
-
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            var x = _student.Create(studentDTO);
+            return x;
         }
-
-        [HttpGet] 
-        public Student GetById(int id)
-        {
-           
-                var response = _istudent.GetByIdStudent(id);
-                return response;
-         
-        }
-
 
         [HttpDelete]
-        public string StudentDelete(int id)
+        public string DeleteStudent(int id)
         {
-            try
-            {
-                var response = _istudent.DeleteStudent(id);
-                return "Malumot ochirildi";
-
-            }
-            catch (Exception ex)
-            {
-                return ex.Message;
-            }
+            var x = _student.Delete(id);
+            return x;
         }
 
-        [HttpPatch]
-        public Student StudentUpdate(int id, StudentDTO studentDTO)
+        [HttpGet]
+        public IEnumerable<StudentModel> GetStudent()
         {
-            try
-            {
-                var response = _istudent.UpdateStudent(id, studentDTO);
-                return Student;
-
-            }
-            catch (Exception ex)
-            {
-                return ex.Message;
-            }
+            IEnumerable<StudentModel> x = _crud.GetAll();
+            return x;
         }
 
+        [HttpGet]
+        public StudentModel GetByIdStudent(int id)
+        {
+            StudentModel result = _crud.GetByIDStudents(id);
+            return result;
+
+        }
+        [HttpPut]
+        public string PutStudent(StudentDTO studentDTO, int id)
+        {
+            var x =_student.Update(id, studentDTO);
+            return x;
+        }
     }
 }
+

@@ -1,5 +1,5 @@
-
-using _48_Najot_TalimApi.MyPattern;
+using _48_Najot_TalimApi.MyRepository.StudentCrud;
+using _48_Najot_TalimApi.MyServises.StudentSrv;
 
 namespace _48_Najot_TalimApi
 {
@@ -16,7 +16,9 @@ namespace _48_Najot_TalimApi
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-            builder.Services.AddScoped<Istudent, StudentRepository>();
+            builder.Services.AddScoped<Istudent, Student>();
+
+            builder.Services.AddScoped<IStudentSrv, StudentSrv>();
 
 
             var app = builder.Build();
