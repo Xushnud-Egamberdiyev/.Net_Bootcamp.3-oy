@@ -1,6 +1,6 @@
 ﻿namespace _48_Najot_TalimApi.Models
 {
-    public class Course
+    public class CourseModel
     {
         public int coutse_id { get; set; }
         public string name { get; set; }

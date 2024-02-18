@@ -1,4 +1,6 @@
+using _48_Najot_TalimApi.MyRepository.CourseCrud;
 using _48_Najot_TalimApi.MyRepository.StudentCrud;
+using _48_Najot_TalimApi.MyServises.CourseSrv;
 using _48_Najot_TalimApi.MyServises.StudentSrv;
 
 namespace _48_Najot_TalimApi
@@ -17,8 +19,10 @@ namespace _48_Najot_TalimApi
             builder.Services.AddSwaggerGen();
 
             builder.Services.AddScoped<Istudent, Student>();
+            builder.Services.AddScoped<Icourse,  Course>();
 
             builder.Services.AddScoped<IStudentSrv, StudentSrv>();
+            builder.Services.AddScoped<ICourseSrv, CourseSrv>();
 
 
             var app = builder.Build();

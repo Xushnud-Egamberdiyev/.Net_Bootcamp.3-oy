@@ -99,15 +99,8 @@ namespace _48_Najot_TalimApi.MyRepository.StudentCrud
                 string query = "Update students set full_name = @full_name, age = @age, course_id = @course_id, phone = @phone, parent_phone = @parent_phone, shot_number = @shot_number" +
                     "where id = @id";
 
-                connection.Execute(query, new
-                {
-                    full_name = studentDTO.full_name,
-                    age = studentDTO.age,
-                    course_id = studentDTO.course_id,
-                    phone = studentDTO.phone,
-                    parent_phone = studentDTO.parent_phone,
-                    shot_number = studentDTO.shot_number,
-                });
+
+                    connection.Execute(query, studentDTO);
 
                     return "Succesfully";
                 }
