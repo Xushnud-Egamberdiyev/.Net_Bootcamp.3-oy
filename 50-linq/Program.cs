@@ -43,10 +43,11 @@
 
             var SelectSubject = Students.SelectMany(s => s.subject).Select(s => s.Name).Distinct().OrderBy(s => s);
 
-            foreach (var item in SelectSubject)
-            {
-                Console.WriteLine(item);
-            }
+
+            //foreach (var item in SelectSubject)
+            //{
+            //    Console.WriteLine(item);
+            //}
 
 
             //var SelectStudents = Students.Select((s, i) => new StudentShort
@@ -60,6 +61,11 @@
             //{
             //    await Console.Out.WriteLineAsync(item.order + item.email);
             //}
+
+
+            
+
+
         }
 
     }
