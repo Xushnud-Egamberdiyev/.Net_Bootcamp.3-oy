@@ -1,6 +1,0 @@
-@_48-Api_Na_jot_Talim_Api_HostAddress = http://localhost:5126
-
-GET {{_48_Wep_Api_Na_jot_Talim_Api_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
