@@ -41,7 +41,7 @@
 
             };
 
-            var SelectSubject = Students.SelectMany(s => s.subject).Select(s => s.Name).Distinct();
+            var SelectSubject = Students.SelectMany(s => s.subject).Select(s => s.Name).Distinct().OrderBy(s => s);
 
             foreach (var item in SelectSubject)
             {
