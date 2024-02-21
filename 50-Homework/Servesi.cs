@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Channels;
 using System.Threading.Tasks;
 
 namespace _50_Homework
@@ -56,12 +57,14 @@ namespace _50_Homework
             {
                 Console.WriteLine(item.Name_b + " " + "->" + " " + item.Name_p);
             }
+            Console.WriteLine();
         }
 
-        public static void Task2(string Pogram_Name)
+      
+        public static void Task2(string Program_Name)
         {
             var result = ModelProgram().Join(ModelBugalter(), p => p.Id, b => b.Programming_id, (p, b)
-                    => new { p.Name_p, b.Name_b });
+                    => new { p.Name_p, b.Name_b }).Where(p => p.Name_p == Program_Name);
 
             foreach (var item in result)
             {
