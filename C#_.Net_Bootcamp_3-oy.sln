@@ -21,7 +21,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "48-Najot_TalimApi", "48-Naj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "50-linq", "50-linq\50-linq.csproj", "{B8B0022B-4D32-49E7-91C6-F3CEC47DFB1B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "50-Homework", "50-Homework\50-Homework.csproj", "{2F3CD9D5-082E-4EC1-90F8-6D1E2602DBA9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "50-Homework", "50-Homework\50-Homework.csproj", "{2F3CD9D5-082E-4EC1-90F8-6D1E2602DBA9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "51-Entity", "51-Entity\51-Entity.csproj", "{C230FEFD-9919-410E-A102-AD07971EFD03}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +71,10 @@ Global
 		{2F3CD9D5-082E-4EC1-90F8-6D1E2602DBA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F3CD9D5-082E-4EC1-90F8-6D1E2602DBA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F3CD9D5-082E-4EC1-90F8-6D1E2602DBA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C230FEFD-9919-410E-A102-AD07971EFD03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C230FEFD-9919-410E-A102-AD07971EFD03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C230FEFD-9919-410E-A102-AD07971EFD03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C230FEFD-9919-410E-A102-AD07971EFD03}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

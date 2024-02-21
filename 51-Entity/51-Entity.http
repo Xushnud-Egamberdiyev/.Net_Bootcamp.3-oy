@@ -1,0 +1,6 @@
+@_51_Entity_HostAddress = http://localhost:5097
+
+GET {{_51_Entity_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
