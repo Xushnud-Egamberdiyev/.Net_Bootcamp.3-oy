@@ -23,7 +23,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "50-linq", "50-linq\50-linq.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "50-Homework", "50-Homework\50-Homework.csproj", "{2F3CD9D5-082E-4EC1-90F8-6D1E2602DBA9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningApiAndEntity", "LearningApiAndEntity\LearningApiAndEntity.csproj", "{E98738F5-0263-42CE-9F0C-55DDC8D33B09}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LearningApiAndEntity", "LearningApiAndEntity\LearningApiAndEntity.csproj", "{E98738F5-0263-42CE-9F0C-55DDC8D33B09}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

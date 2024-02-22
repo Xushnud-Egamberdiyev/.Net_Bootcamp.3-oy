@@ -1,6 +1,6 @@
 
-using LearningApiAndEntity.Application;
-using LearningApiAndEntity.Data;
+using LearningApiAndEntity.CarServeces;
+using LearningApiAndEntity.Infracture;
 using Microsoft.EntityFrameworkCore;
 
 namespace LearningApiAndEntity
@@ -18,12 +18,14 @@ namespace LearningApiAndEntity
             builder.Services.AddControllers();
 
 
-            builder.Services.AddDbContext<ApplicationDbContext>(options =>
+
+
+            builder.Services.AddDbContext<AplicationDbContext>(options =>
             {
                 options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
             });
 
-            builder.Services.AddScoped<ICarService, CarService>();
+            builder.Services.AddScoped<ICarService, CarServece>();
 
 
 
