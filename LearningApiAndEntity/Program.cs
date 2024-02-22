@@ -1,13 +1,16 @@
 
-using _51_Entity.Infrastructure;
+using LearningApiAndEntity.Application;
+using LearningApiAndEntity.Data;
 using Microsoft.EntityFrameworkCore;
 
-namespace _51_Entity
+namespace LearningApiAndEntity
 {
     public class Program
     {
         public static void Main(string[] args)
         {
+            // Add services to the container.
+
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
@@ -18,11 +21,9 @@ namespace _51_Entity
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
             {
                 options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
-            })
+            });
 
-
-
-
+            builder.Services.AddScoped<ICarService, CarService>();
 
 
 
@@ -43,7 +44,6 @@ namespace _51_Entity
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-
 
             app.MapControllers();
 

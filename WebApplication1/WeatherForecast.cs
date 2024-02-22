@@ -1,4 +1,4 @@
-namespace _51_Entity
+namespace WebApplication1
 {
     public class WeatherForecast
     {

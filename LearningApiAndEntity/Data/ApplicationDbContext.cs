@@ -1,16 +1,16 @@
-﻿using _51_Entity.Models;
+﻿using LearningApiAndEntity.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace _51_Entity.Infrastructure
+namespace LearningApiAndEntity.Data
 {
-
     public class ApplicationDbContext : DbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-            :base(options)
+            : base(options)
         {
 
         }
-        public DbSet<car> Cars { get; set; }
+
+        public DbSet<Car> Cars { get; set; }
     }
 }
