@@ -20,11 +20,11 @@ namespace _45_Wep_api_Dapper.Controllers
                 string query = $"Select * from darslar;";
                 connection.Open();
 
-                var experemeties = connection.Query<Experemts>(query); 
-                
+                var experemeties = connection.Query<Experemts>(query);
+
                 return experemeties.ToList();
 
-                
+
             }
         }
 
@@ -43,7 +43,7 @@ namespace _45_Wep_api_Dapper.Controllers
                 return "Malumot qoshild";
 
 
-                
+
 
 
             }
@@ -51,7 +51,7 @@ namespace _45_Wep_api_Dapper.Controllers
         }
 
         [HttpPatch]
-        public int UpdatePatch(int  id,string mavzu)
+        public int UpdatePatch(int id, string mavzu)
         {
             string query = $"update darslar set mavzu = @mavzu where id = @id";
             using (NpgsqlConnection connection = new NpgsqlConnection(connectionstring))

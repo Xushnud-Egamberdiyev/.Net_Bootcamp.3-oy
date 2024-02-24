@@ -3,8 +3,6 @@ using _48_Najot_TalimApi.Models;
 using _48_Najot_TalimApi.MyRepository.StudentCrud;
 using _48_Najot_TalimApi.MyServises.StudentSrv;
 using Microsoft.AspNetCore.Mvc;
-using Npgsql;
-using System.Data.SqlTypes;
 
 namespace _48_Najot_TalimApi.Controllers
 {
@@ -50,7 +48,7 @@ namespace _48_Najot_TalimApi.Controllers
         [HttpPut]
         public string PutStudent(StudentDTO studentDTO, int id)
         {
-            var x =_student.Update(id, studentDTO);
+            var x = _student.Update(id, studentDTO);
             return x;
         }
     }

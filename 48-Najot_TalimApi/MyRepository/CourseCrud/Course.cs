@@ -1,7 +1,6 @@
 ﻿using _48_Najot_TalimApi.DTO;
 using _48_Najot_TalimApi.Models;
 using Dapper;
-using Microsoft.AspNetCore.Identity;
 using Npgsql;
 
 namespace _48_Najot_TalimApi.MyRepository.CourseCrud
@@ -17,7 +16,7 @@ namespace _48_Najot_TalimApi.MyRepository.CourseCrud
         {
             try
             {
-                using(NpgsqlConnection connection = new NpgsqlConnection(_config.GetConnectionString("DefaultConnection")))
+                using (NpgsqlConnection connection = new NpgsqlConnection(_config.GetConnectionString("DefaultConnection")))
                 {
                     string query = "Insert into courses(name, teacher_id, duration, price, description, student_count)" +
                         "values(@name, @teacher_id, @duration, @price, @description, @student_count)";
@@ -47,7 +46,7 @@ namespace _48_Najot_TalimApi.MyRepository.CourseCrud
         {
             try
             {
-        
+
                 using (NpgsqlConnection connection = new NpgsqlConnection(_config.GetConnectionString("DefaultConnection")))
                 {
 
@@ -58,7 +57,8 @@ namespace _48_Najot_TalimApi.MyRepository.CourseCrud
                     return "Malumot ochirildi";
 
                 }
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 return ex.Message;
             }
@@ -68,7 +68,7 @@ namespace _48_Najot_TalimApi.MyRepository.CourseCrud
         {
             try
             {
-                using(NpgsqlConnection connection = new NpgsqlConnection(_config.GetConnectionString("DefaultConnection")))
+                using (NpgsqlConnection connection = new NpgsqlConnection(_config.GetConnectionString("DefaultConnection")))
                 {
                     string query = "Select * from Courses";
 
@@ -126,7 +126,7 @@ namespace _48_Najot_TalimApi.MyRepository.CourseCrud
                 }
             }
             catch (Exception ex) { return ex.Message; }
-            
+
         }
     }
 }

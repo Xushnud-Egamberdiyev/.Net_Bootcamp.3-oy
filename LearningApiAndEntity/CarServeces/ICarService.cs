@@ -9,7 +9,7 @@ namespace LearningApiAndEntity.CarServeces
         public Task<bool> DeleteCarAsynk(int id);
         public Task<List<Car>> GetAllCarAsnk();
         public Task<Car> GetCarByIdAsynk(int id);
-        
+
 
     }
 }

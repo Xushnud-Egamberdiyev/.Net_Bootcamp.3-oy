@@ -44,7 +44,7 @@ namespace _48_Najot_TalimApi.MyRepository.StudentCrud
         {
             try
             {
-                using(NpgsqlConnection connection = new NpgsqlConnection(_config.GetConnectionString("DefaultConnection")))
+                using (NpgsqlConnection connection = new NpgsqlConnection(_config.GetConnectionString("DefaultConnection")))
                 {
                     string query = "Delete from students where Student_id = @idd";
 
@@ -52,9 +52,9 @@ namespace _48_Najot_TalimApi.MyRepository.StudentCrud
 
                     return "Succesfully";
                 }
-                
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return ex.Message;
             }
@@ -64,7 +64,7 @@ namespace _48_Najot_TalimApi.MyRepository.StudentCrud
         {
             try
             {
-                using(NpgsqlConnection connection = new NpgsqlConnection(_config.GetConnectionString("DefaultConnection")))
+                using (NpgsqlConnection connection = new NpgsqlConnection(_config.GetConnectionString("DefaultConnection")))
                 {
                     string query = "Select * from Students";
 
@@ -72,7 +72,7 @@ namespace _48_Najot_TalimApi.MyRepository.StudentCrud
                     return result;
                 }
             }
-            catch 
+            catch
             {
                 return Enumerable.Empty<StudentModel>();
             }
@@ -81,7 +81,7 @@ namespace _48_Najot_TalimApi.MyRepository.StudentCrud
 
         public StudentModel GetByIDStudents(int id)
         {
-            using(NpgsqlConnection connection = new NpgsqlConnection(_config.GetConnectionString("DefaultConnection")))
+            using (NpgsqlConnection connection = new NpgsqlConnection(_config.GetConnectionString("DefaultConnection")))
             {
                 string query = "Select * from Students where student_id = @id";
 
@@ -93,11 +93,12 @@ namespace _48_Najot_TalimApi.MyRepository.StudentCrud
 
         public string Update(int id, StudentDTO studentDTO)
         {
-            try { 
-            using (NpgsqlConnection connection = new NpgsqlConnection(_config.GetConnectionString("DefaultConnection")))
+            try
             {
-                string query = "Update students set full_name = @full_name, age = @age, course_id = @course_id, phone = @phone, parent_phone = @parent_phone, shot_number = @shot_number" +
-                    "where id = @id";
+                using (NpgsqlConnection connection = new NpgsqlConnection(_config.GetConnectionString("DefaultConnection")))
+                {
+                    string query = "Update students set full_name = @full_name, age = @age, course_id = @course_id, phone = @phone, parent_phone = @parent_phone, shot_number = @shot_number" +
+                        "where id = @id";
 
 
                     connection.Execute(query, studentDTO);

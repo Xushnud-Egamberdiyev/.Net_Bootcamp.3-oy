@@ -1,8 +1,6 @@
 ﻿using LearningApiAndEntity.CarServeces;
-using LearningApiAndEntity.Infracture;
 using LearningApiAndEntity.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace LearningApiAndEntity.Controllers
 {
@@ -21,7 +19,7 @@ namespace LearningApiAndEntity.Controllers
         [HttpPost]
         public async Task<string> CreateCar(Car model)
         {
-            var result =  await _service.CreateCarAsnk(model);
+            var result = await _service.CreateCarAsnk(model);
 
             return result;
         }
@@ -43,7 +41,7 @@ namespace LearningApiAndEntity.Controllers
         }
 
         [HttpPut]
-        public async Task<Car>  UpdateCarAsync(int id, Car model)
+        public async Task<Car> UpdateCarAsync(int id, Car model)
         {
             var result = await _service.UpdateCarAsynk(id, model);
 

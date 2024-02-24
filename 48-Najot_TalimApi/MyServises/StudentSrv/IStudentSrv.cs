@@ -1,5 +1,4 @@
 ﻿using _48_Najot_TalimApi.DTO;
-using _48_Najot_TalimApi.Models;
 
 namespace _48_Najot_TalimApi.MyServises.StudentSrv
 {

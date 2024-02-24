@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Channels;
-using System.Threading.Tasks;
-
-namespace _50_Homework
+﻿namespace _50_Homework
 {
     public class Servesi
     {
@@ -60,7 +53,7 @@ namespace _50_Homework
             Console.WriteLine();
         }
 
-      
+
         public static void Task2(string Program_Name)
         {
             var result = ModelProgram().Join(ModelBugalter(), p => p.Id, b => b.Programming_id, (p, b)

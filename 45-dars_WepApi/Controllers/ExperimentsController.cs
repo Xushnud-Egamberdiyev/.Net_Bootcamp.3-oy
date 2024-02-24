@@ -1,5 +1,4 @@
 ﻿using _45_dars_WepApi.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Npgsql;
 
@@ -14,18 +13,18 @@ namespace _45_dars_WepApi.Controllers
         [HttpGet]
         public List<Experement> Get()
         {
-            using(NpgsqlConnection  connection = new NpgsqlConnection(connectionstring))
+            using (NpgsqlConnection connection = new NpgsqlConnection(connectionstring))
             {
                 string query = $"Select * from darslar;";
                 connection.Open();
 
-                NpgsqlCommand command =new NpgsqlCommand(query,connection);
+                NpgsqlCommand command = new NpgsqlCommand(query, connection);
 
                 var x = command.ExecuteReader();
 
                 List<Experement> list = new List<Experement>();
 
-                while(x.Read())
+                while (x.Read())
                 {
                     list.Add(new Experement()
                     {
@@ -45,19 +44,19 @@ namespace _45_dars_WepApi.Controllers
         [HttpPost]
         public string Create(string mavzu, int student_count)
         {
-            using(NpgsqlConnection connection = new NpgsqlConnection(connectionstring))
+            using (NpgsqlConnection connection = new NpgsqlConnection(connectionstring))
             {
                 string query = $"insert into darslar(mavzu, student_count) values(@mavzu, @student_count)";
                 connection.Open();
 
-                NpgsqlCommand command =new NpgsqlCommand(query,connection);
+                NpgsqlCommand command = new NpgsqlCommand(query, connection);
 
                 command.Parameters.AddWithValue("mavzu", mavzu);
                 command.Parameters.AddWithValue("student_count", student_count);
 
                 int x = command.ExecuteNonQuery();
 
-                if(x != 0)
+                if (x != 0)
                 {
                     return "Malumot yaratildi";
                 }
@@ -69,11 +68,11 @@ namespace _45_dars_WepApi.Controllers
         [HttpDelete]
         public string DeleteData(int id)
         {
-            using( NpgsqlConnection connection = new NpgsqlConnection(connectionstring))
+            using (NpgsqlConnection connection = new NpgsqlConnection(connectionstring))
             {
                 string query = $"Delete from darslar where id = {id}";
                 connection.Open();
-                NpgsqlCommand command =new NpgsqlCommand(query, connection);
+                NpgsqlCommand command = new NpgsqlCommand(query, connection);
                 command.ExecuteNonQuery();
 
                 return $"{id}-Idli malumot ochirildi";
@@ -90,7 +89,7 @@ namespace _45_dars_WepApi.Controllers
                 NpgsqlCommand command = new NpgsqlCommand(query, connection);
 
                 return "Malumot yangilandi";
-                
+
             }
         }
 

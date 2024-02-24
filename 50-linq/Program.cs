@@ -6,7 +6,7 @@
         {
             var Students = new List<Student>
             {
-                new Student { 
+                new Student {
                     id = 1,
                     name = "John",
                     email = "john@gmail.com",
@@ -18,7 +18,7 @@
                     }
                 },
 
-                new Student { 
+                new Student {
                     id = 2,
                     name = "Mary",
                     email = "mary@icloud.com",
@@ -28,7 +28,7 @@
                         new Subject {id = 3, Name = "Chemistry"}
                     }
                 },
-                new Student { 
+                new Student {
                     id = 3,
                     name = "Peter",
                     email = "peter@yandex.ru",
@@ -63,7 +63,7 @@
             //}
 
 
-            
+
 
 
         }

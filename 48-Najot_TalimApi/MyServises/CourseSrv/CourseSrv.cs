@@ -118,7 +118,7 @@ namespace _48_Najot_TalimApi.MyServises.CourseSrv
                         if ((reader.GetInt32(0) == id))
                         {
                             num = 1;
-                            _course.Update(courseDTO,id);
+                            _course.Update(courseDTO, id);
 
                         }
                     }
@@ -141,5 +141,5 @@ namespace _48_Najot_TalimApi.MyServises.CourseSrv
     }
 }
 
-    
+
 

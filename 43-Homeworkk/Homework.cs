@@ -1,13 +1,5 @@
 ﻿using Npgsql;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static Npgsql.Replication.PgOutput.Messages.RelationMessage;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace _43_Homeworkk
 {
@@ -27,7 +19,7 @@ namespace _43_Homeworkk
         {
             Open();
             string query = $"Create table {TableName} ({column1}, {column2}, {column3})";
-            command =new NpgsqlCommand(query, connection);
+            command = new NpgsqlCommand(query, connection);
             command.ExecuteNonQuery();
             Close();
 
@@ -83,7 +75,7 @@ namespace _43_Homeworkk
         {
             Open();
             query = $"select * from {table_name}\nwhere id = {id}";
-            command = new NpgsqlCommand (query , connection);
+            command = new NpgsqlCommand(query, connection);
             command.ExecuteNonQuery();
             Close();
         }

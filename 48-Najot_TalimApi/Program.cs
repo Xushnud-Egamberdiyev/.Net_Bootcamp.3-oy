@@ -19,7 +19,7 @@ namespace _48_Najot_TalimApi
             builder.Services.AddSwaggerGen();
 
             builder.Services.AddScoped<Istudent, Student>();
-            builder.Services.AddScoped<Icourse,  Course>();
+            builder.Services.AddScoped<Icourse, Course>();
 
             builder.Services.AddScoped<IStudentSrv, StudentSrv>();
             builder.Services.AddScoped<ICourseSrv, CourseSrv>();

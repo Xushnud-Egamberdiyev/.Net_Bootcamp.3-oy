@@ -1,0 +1,6 @@
+@AsilMedia_HostAddress = http://localhost:5016
+
+GET {{AsilMedia_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

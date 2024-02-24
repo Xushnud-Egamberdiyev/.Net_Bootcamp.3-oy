@@ -1,7 +1,6 @@
 ﻿
 
 using _48_Najot_TalimApi.DTO;
-using _48_Najot_TalimApi.Models;
 using _48_Najot_TalimApi.MyRepository.StudentCrud;
 
 namespace _48_Najot_TalimApi.MyServises.StudentSrv
@@ -32,7 +31,7 @@ namespace _48_Najot_TalimApi.MyServises.StudentSrv
 
         public string Delete(int id)
         {
-            if(id < 0)
+            if (id < 0)
             {
                 return "Id error";
             }
@@ -49,11 +48,11 @@ namespace _48_Najot_TalimApi.MyServises.StudentSrv
 
         public string Update(int id, StudentDTO studentDTO)
         {
-            if(id > 0)
+            if (id > 0)
             {
-                if(studentDTO.full_name == "")
+                if (studentDTO.full_name == "")
                 {
-                    if(studentDTO != null)
+                    if (studentDTO != null)
                     {
                         return "Done";
                         _istudent.Update(id, studentDTO);

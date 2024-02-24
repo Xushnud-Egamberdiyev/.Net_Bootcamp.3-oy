@@ -2,7 +2,6 @@
 using _48_Najot_TalimApi.Models;
 using _48_Najot_TalimApi.MyRepository.CourseCrud;
 using _48_Najot_TalimApi.MyServises.CourseSrv;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace _48_Najot_TalimApi.Controllers
@@ -51,7 +50,7 @@ namespace _48_Najot_TalimApi.Controllers
         [HttpPut]
         public string Update(int id, CourseDTO courseDTO)
         {
-            string result = _course.UpdateCourse(courseDTO,id);
+            string result = _course.UpdateCourse(courseDTO, id);
             return result;
         }
 

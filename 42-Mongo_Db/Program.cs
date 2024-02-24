@@ -8,7 +8,7 @@ namespace _42_Mongo_Db
         static void Main(string[] args)
         {
             var Db_context = new DbContent();
-            
+
         }
     }
 }

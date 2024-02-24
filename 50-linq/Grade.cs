@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace _50_linq
+﻿namespace _50_linq
 {
     public class Grade
     {
-        public int id {  get; set; }
+        public int id { get; set; }
         public string name { get; set; }
-        public int level { get; set; }  
+        public int level { get; set; }
     }
 }

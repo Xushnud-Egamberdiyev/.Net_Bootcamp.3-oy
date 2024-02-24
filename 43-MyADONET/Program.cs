@@ -1,6 +1,4 @@
-﻿using _43_MyADONET;
-using Npgsql;
-using System.Net;
+﻿using Npgsql;
 
 internal class Program
 {
@@ -12,20 +10,20 @@ internal class Program
 
         connection.Open();
 
-        string query = "select * from Darslar"; 
+        string query = "select * from Darslar";
 
 
-        
+
         NpgsqlCommand command = new NpgsqlCommand(query, connection);
 
         NpgsqlDataReader reader = command.ExecuteReader();
 
-        while(reader.Read())
+        while (reader.Read())
         {
-            Console.WriteLine($@"{ reader.GetInt32(0)},{reader.GetString(1)}, {reader.GetDateTime(2)},{reader.GetInt32(3)}");
+            Console.WriteLine($@"{reader.GetInt32(0)},{reader.GetString(1)}, {reader.GetDateTime(2)},{reader.GetInt32(3)}");
         }
-         
-         command.ExecuteNonQuery();
+
+        command.ExecuteNonQuery();
 
         Console.WriteLine("Databasega Muvofaqiyatli table yaratildi");
 

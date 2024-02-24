@@ -25,6 +25,18 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "50-Homework", "50-Homework\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LearningApiAndEntity", "LearningApiAndEntity\LearningApiAndEntity.csproj", "{E98738F5-0263-42CE-9F0C-55DDC8D33B09}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AsilMedia", "AsilMedia\AsilMedia.csproj", "{1A3DF0C7-2912-49CA-B529-EA81845EAF86}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "52-Entity", "52-Entity", "{E9558685-06F3-41EA-85AE-73DB06F52FEC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileLessonApi", "FileLessonApi\FileLessonApi.csproj", "{261418A9-EDAC-4E6C-96AE-16F3D66FE789}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileApiLesson.Aplication", "FileApiLessonAplication\FileApiLesson.Aplication.csproj", "{8A3730B6-24AE-4517-BDEF-8A5318894485}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileApiLesson.Domen", "FileApiLessonDomen\FileApiLesson.Domen.csproj", "{47EE0D2D-C745-4133-AA04-F50B8D1E1F32}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileApiLesson.Infrustructure", "FileApiLesson.Infrustructure\FileApiLesson.Infrustructure.csproj", "{D656155F-DFF4-4F2C-AB91-2ABD324EF2D7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,9 +87,35 @@ Global
 		{E98738F5-0263-42CE-9F0C-55DDC8D33B09}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E98738F5-0263-42CE-9F0C-55DDC8D33B09}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E98738F5-0263-42CE-9F0C-55DDC8D33B09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A3DF0C7-2912-49CA-B529-EA81845EAF86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A3DF0C7-2912-49CA-B529-EA81845EAF86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A3DF0C7-2912-49CA-B529-EA81845EAF86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A3DF0C7-2912-49CA-B529-EA81845EAF86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{261418A9-EDAC-4E6C-96AE-16F3D66FE789}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{261418A9-EDAC-4E6C-96AE-16F3D66FE789}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{261418A9-EDAC-4E6C-96AE-16F3D66FE789}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{261418A9-EDAC-4E6C-96AE-16F3D66FE789}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A3730B6-24AE-4517-BDEF-8A5318894485}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A3730B6-24AE-4517-BDEF-8A5318894485}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A3730B6-24AE-4517-BDEF-8A5318894485}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A3730B6-24AE-4517-BDEF-8A5318894485}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47EE0D2D-C745-4133-AA04-F50B8D1E1F32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47EE0D2D-C745-4133-AA04-F50B8D1E1F32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47EE0D2D-C745-4133-AA04-F50B8D1E1F32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47EE0D2D-C745-4133-AA04-F50B8D1E1F32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D656155F-DFF4-4F2C-AB91-2ABD324EF2D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D656155F-DFF4-4F2C-AB91-2ABD324EF2D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D656155F-DFF4-4F2C-AB91-2ABD324EF2D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D656155F-DFF4-4F2C-AB91-2ABD324EF2D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{261418A9-EDAC-4E6C-96AE-16F3D66FE789} = {E9558685-06F3-41EA-85AE-73DB06F52FEC}
+		{8A3730B6-24AE-4517-BDEF-8A5318894485} = {E9558685-06F3-41EA-85AE-73DB06F52FEC}
+		{47EE0D2D-C745-4133-AA04-F50B8D1E1F32} = {E9558685-06F3-41EA-85AE-73DB06F52FEC}
+		{D656155F-DFF4-4F2C-AB91-2ABD324EF2D7} = {E9558685-06F3-41EA-85AE-73DB06F52FEC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {57FF7BD4-426D-46DC-B710-98A8555C446D}
