@@ -1,21 +1,25 @@
 ﻿using FileApiLesson.Domen.Entitys.DTOs;
 using FileApiLesson.Domen.Entitys.Models;
-using FileLessonApi.ExternalService;
+using FileApiLesson.Infrustructure.Persistance;
 using LearningApiAndEntity.Infracture;
+
+
+
 
 namespace FileApiLesson.Aplication.Services.UserProfileServices
 {
     public class UserProfileService : IUserProfileServeces
     {
-        private readonly AplicationDbContext _context;
-        public UserProfileService(AplicationDbContext aplicationDbContext)
+        private readonly ApplicationDbContext _context;
+
+        public UserProfileService(ApplicationDbContext aplicationDb)
         {
-            _context = aplicationDbContext;
+            _context = aplicationDb;
         }
 
         public async Task<UserProfileDTO> CreateUserProfileAsynk(UserProfileDTO userDTO)
         {
-            UserProfileExternalService obj = new UserProfileExternalService();
+            //UserProfileExternalService obj = new UserProfileExternalService();
             var model = new UserProfile
             {
                 FullName = userDTO.FullName,
@@ -23,10 +27,12 @@ namespace FileApiLesson.Aplication.Services.UserProfileServices
                 Role = userDTO.Role,
                 Login = userDTO.Login,
                 Password = userDTO.Password,
-                PicturePath = await obj.AddPictureAnGetPath(userDTO.Picture),
+                //PicturePath = await obj.AddPictureAnGetPath(userDTO.Picture),
             };
 
-            _context.Users
+            _context.Users.Add(model);
+            await _context.SaveChangesAsync();
+            return userDTO;
         }
 
         public Task<bool> DeleteUserProfileAsynk(int id)

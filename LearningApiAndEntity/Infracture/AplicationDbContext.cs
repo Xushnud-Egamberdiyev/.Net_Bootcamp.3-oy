@@ -12,5 +12,6 @@ namespace LearningApiAndEntity.Infracture
         }
 
         public DbSet<Car> Cars { get; set; }
+        public object Users { get; set; }
     }
 }
