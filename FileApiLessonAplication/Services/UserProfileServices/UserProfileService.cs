@@ -1,7 +1,6 @@
 ﻿using FileApiLesson.Domen.Entitys.DTOs;
 using FileApiLesson.Domen.Entitys.Models;
 using FileApiLesson.Infrustructure.Persistance;
-using LearningApiAndEntity.Infracture;
 
 
 
@@ -19,7 +18,7 @@ namespace FileApiLesson.Aplication.Services.UserProfileServices
 
         public async Task<UserProfileDTO> CreateUserProfileAsynk(UserProfileDTO userDTO)
         {
-            //UserProfileExternalService obj = new UserProfileExternalService();
+
             var model = new UserProfile
             {
                 FullName = userDTO.FullName,
@@ -27,7 +26,7 @@ namespace FileApiLesson.Aplication.Services.UserProfileServices
                 Role = userDTO.Role,
                 Login = userDTO.Login,
                 Password = userDTO.Password,
-                //PicturePath = await obj.AddPictureAnGetPath(userDTO.Picture),
+
             };
 
             _context.Users.Add(model);
