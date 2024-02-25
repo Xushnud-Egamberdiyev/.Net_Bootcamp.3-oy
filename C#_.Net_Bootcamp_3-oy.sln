@@ -29,13 +29,23 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AsilMedia", "AsilMedia\Asil
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "52-Entity", "52-Entity", "{E9558685-06F3-41EA-85AE-73DB06F52FEC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileLessonApi", "FileLessonApi\FileLessonApi.csproj", "{261418A9-EDAC-4E6C-96AE-16F3D66FE789}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileLessonApi", "FileLessonApi\FileLessonApi.csproj", "{261418A9-EDAC-4E6C-96AE-16F3D66FE789}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileApiLesson.Aplication", "FileApiLessonAplication\FileApiLesson.Aplication.csproj", "{8A3730B6-24AE-4517-BDEF-8A5318894485}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileApiLesson.Aplication", "FileApiLessonAplication\FileApiLesson.Aplication.csproj", "{8A3730B6-24AE-4517-BDEF-8A5318894485}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileApiLesson.Domen", "FileApiLessonDomen\FileApiLesson.Domen.csproj", "{47EE0D2D-C745-4133-AA04-F50B8D1E1F32}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileApiLesson.Domen", "FileApiLessonDomen\FileApiLesson.Domen.csproj", "{47EE0D2D-C745-4133-AA04-F50B8D1E1F32}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileApiLesson.Infrustructure", "FileApiLesson.Infrustructure\FileApiLesson.Infrustructure.csproj", "{D656155F-DFF4-4F2C-AB91-2ABD324EF2D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileApiLesson.Infrustructure", "FileApiLesson.Infrustructure\FileApiLesson.Infrustructure.csproj", "{D656155F-DFF4-4F2C-AB91-2ABD324EF2D7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "53-Entity_Homework", "53-Entity_Homework", "{FF5A6811-B918-48D2-B4DA-7EF6C1E8EC7D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileApi", "FileApi\FileApi.csproj", "{EE64200F-7092-4B93-9623-5440069664F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileApi.Domen", "FileApi.Domen\FileApi.Domen.csproj", "{D1CAFDAB-BE71-4581-A9AB-0E6F9370C70B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileApi.Aplication", "FileApi.Aplication\FileApi.Aplication.csproj", "{7E2D357B-3115-4181-9E25-57E5FCAA7569}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileApi.Infrustructure", "FileApi.n.Infrustructure\FileApi.Infrustructure.csproj", "{3F5FD748-D3D7-4F2F-AD6E-1BC2AE1D0621}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -107,6 +117,22 @@ Global
 		{D656155F-DFF4-4F2C-AB91-2ABD324EF2D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D656155F-DFF4-4F2C-AB91-2ABD324EF2D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D656155F-DFF4-4F2C-AB91-2ABD324EF2D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE64200F-7092-4B93-9623-5440069664F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE64200F-7092-4B93-9623-5440069664F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE64200F-7092-4B93-9623-5440069664F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE64200F-7092-4B93-9623-5440069664F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1CAFDAB-BE71-4581-A9AB-0E6F9370C70B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1CAFDAB-BE71-4581-A9AB-0E6F9370C70B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1CAFDAB-BE71-4581-A9AB-0E6F9370C70B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1CAFDAB-BE71-4581-A9AB-0E6F9370C70B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E2D357B-3115-4181-9E25-57E5FCAA7569}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E2D357B-3115-4181-9E25-57E5FCAA7569}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E2D357B-3115-4181-9E25-57E5FCAA7569}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E2D357B-3115-4181-9E25-57E5FCAA7569}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F5FD748-D3D7-4F2F-AD6E-1BC2AE1D0621}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F5FD748-D3D7-4F2F-AD6E-1BC2AE1D0621}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F5FD748-D3D7-4F2F-AD6E-1BC2AE1D0621}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F5FD748-D3D7-4F2F-AD6E-1BC2AE1D0621}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -116,6 +142,10 @@ Global
 		{8A3730B6-24AE-4517-BDEF-8A5318894485} = {E9558685-06F3-41EA-85AE-73DB06F52FEC}
 		{47EE0D2D-C745-4133-AA04-F50B8D1E1F32} = {E9558685-06F3-41EA-85AE-73DB06F52FEC}
 		{D656155F-DFF4-4F2C-AB91-2ABD324EF2D7} = {E9558685-06F3-41EA-85AE-73DB06F52FEC}
+		{EE64200F-7092-4B93-9623-5440069664F7} = {FF5A6811-B918-48D2-B4DA-7EF6C1E8EC7D}
+		{D1CAFDAB-BE71-4581-A9AB-0E6F9370C70B} = {FF5A6811-B918-48D2-B4DA-7EF6C1E8EC7D}
+		{7E2D357B-3115-4181-9E25-57E5FCAA7569} = {FF5A6811-B918-48D2-B4DA-7EF6C1E8EC7D}
+		{3F5FD748-D3D7-4F2F-AD6E-1BC2AE1D0621} = {FF5A6811-B918-48D2-B4DA-7EF6C1E8EC7D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {57FF7BD4-426D-46DC-B710-98A8555C446D}
