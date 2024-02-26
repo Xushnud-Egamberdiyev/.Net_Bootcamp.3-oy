@@ -8,5 +8,9 @@ namespace SendEmail.Domain.Entity.Modols
 {
     public class EmailModel
     {
+        public string To { get; set; }
+        public string Subject {  get; set; }
+        public string Boby { get; set; }
     }
 }
+ 
