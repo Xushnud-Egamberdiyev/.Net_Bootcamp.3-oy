@@ -1,18 +1,23 @@
-﻿using Microsoft.Extensions.Configuration;
-using SendEmail.Domain.Entity.Modols;
-using System.Net;
+﻿using Email_Domen.Entity.Models;
+using Microsoft.Extensions.Configuration;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net.Mail;
+using System.Net;
+using System.Text;
+using System.Threading.Tasks;
 
-
-namespace SendEmail.Aplication.Servece.SendEmailServece
+namespace Email_Application.Serveces.EmailServeces
 {
-    public class EmailServece : IEmailService
+    public class EmailServece : IEmailServece
     {
-        private readonly IConfiguration _config;
+        public readonly IConfiguration _config;
         public EmailServece(IConfiguration configuration)
         {
             _config = configuration;
-        }c
+        }
+        
         public async Task SendEmailAsync(EmailModel model)
         {
             var emailSettings = _config.GetSection("EmailSettings");
@@ -20,7 +25,7 @@ namespace SendEmail.Aplication.Servece.SendEmailServece
             {
                 From = new MailAddress(emailSettings["Sender"], emailSettings["SenderName"]),
                 Subject = model.Subject,
-                Body = model.Boby,
+                Body = model.Body,
                 IsBodyHtml = true,
             };
 

@@ -1,5 +1,7 @@
-
-namespace SendEmail
+using Email_Application.Serveces;
+using Email_Application.Serveces.EmailServeces;
+using System.Security.Cryptography.X509Certificates;
+namespace Email_Homework
 {
     public class Program
     {
@@ -10,9 +12,13 @@ namespace SendEmail
             // Add services to the container.
 
             builder.Services.AddControllers();
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddApplication();
+
 
             var app = builder.Build();
 

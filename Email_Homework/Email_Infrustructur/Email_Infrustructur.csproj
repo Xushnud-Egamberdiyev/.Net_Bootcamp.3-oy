@@ -6,9 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\SendEmail.Domain\SendEmail.Domain.csproj" />
-    <ProjectReference Include="..\SenEamil.Api\SenEamil.Api.csproj" />
-  </ItemGroup>
-
 </Project>
