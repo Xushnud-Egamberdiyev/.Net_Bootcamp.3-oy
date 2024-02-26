@@ -1,4 +1,5 @@
 using FileApi.Infrustructure;
+using FileApi.Aplication;
 namespace FileApi
 {
     public class Program
@@ -14,7 +15,9 @@ namespace FileApi
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            builder.Services.AdService();
             builder.Services.AddContexts(builder.Configuration);
+           
 
 
             var app = builder.Build();
