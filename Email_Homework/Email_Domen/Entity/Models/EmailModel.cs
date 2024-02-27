@@ -11,6 +11,7 @@ namespace Email_Domen.Entity.Models
     {
         public string To { get; set; }
         public string Subject { get; set; }
+        [JsonIgnore]
         public string? Body { get; set; }
     }
 }

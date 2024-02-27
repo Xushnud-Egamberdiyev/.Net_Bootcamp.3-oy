@@ -16,6 +16,7 @@ namespace Email_Homework.Controllers
             _email = emailServece;
         }
 
+        [HttpPost]
         public async Task<IActionResult> SendEmail([FromBody] EmailModel model)
         {
             await _email.SendEmailAsync(model);
