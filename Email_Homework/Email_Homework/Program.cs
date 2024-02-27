@@ -1,6 +1,6 @@
-using Email_Application.Serveces;
-using Email_Application.Serveces.EmailServeces;
-using System.Security.Cryptography.X509Certificates;
+using Email_Application;
+using Email_Infrustructur;
+
 namespace Email_Homework
 {
     public class Program
@@ -13,11 +13,13 @@ namespace Email_Homework
 
             builder.Services.AddControllers();
 
+            builder.Services.AddApplication();
+            builder.Services.AddInfrustructure(builder.Configuration);
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-            builder.Services.AddApplication();
 
 
             var app = builder.Build();
