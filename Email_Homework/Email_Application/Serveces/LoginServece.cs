@@ -23,24 +23,28 @@ namespace Email_Application.Serveces
             _config = configuration;
             _context = aplication;
         }
-        public async Task<Login> SingUpAsync(SingUpDTO singUpDTO)
+        public async Task SingUpAsync(SingUpDTO singUpDTO)
         {
-            if(singUpDTO.Password == singUpDTO.confirmationcode)
+            if(singUpDTO.Password != singUpDTO.confirmationcode)
             {
-                var model = new Login()
-                {
-                    Email = singUpDTO.Email,
-                    Password = singUpDTO.Password,
-                };
-
-                await _context.Logins.AddAsync(model);
-                await _context.SaveChangesAsync();
-
-                return model;
-
+                throw new Exception("Email already exists");
+            }
+            else if (singUpDTO.Password != singUpDTO.confirmationcode)
+            {
+                throw new Exception("Passwords do not match");
             }
 
-            return new Login();
+
+            var model = new Login()
+            {
+                Email = singUpDTO.Email,
+                Password = singUpDTO.Password,
+                SendCode = "0"
+            };
+
+            await _context.Logins.AddAsync(model);
+            await _context.SaveChangesAsync();
+
         }
 
         public async Task<Login> SingInAsync(LoginDTO loginDTO)

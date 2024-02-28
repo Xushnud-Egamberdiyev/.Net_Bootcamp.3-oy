@@ -14,17 +14,13 @@ namespace Email_Homework.Controllers
         {
             _login = login;
         }
-
+        [HttpPost]
         public async Task<IActionResult> SignUpAsync(SingUpDTO model)
         {
-            var verify = await _login.SingUpAsync(model);
+             await _login.SingUpAsync(model);
 
-            if (verify != null)
-            {
-                return Ok(verify);
-            }
 
-            return BadRequest("Siz allaqachon ro'yxatdan o'tgansiz yoki tasdiqlash parolingiz parol bilan bir xil emas!");
+            return Ok("Success");
         }
 
         [HttpPost]

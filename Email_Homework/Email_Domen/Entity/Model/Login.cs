@@ -14,7 +14,8 @@ namespace Email_Domen.Entity.Model
         [EmailAddress]
         public string Email { get; set; }
         public string Password { get; set; }
+        [Required]
         [JsonIgnore]
-        public string SendCode {  get; set; }
+        public string SendCode { get; set; } = string.Empty;
     }
 }

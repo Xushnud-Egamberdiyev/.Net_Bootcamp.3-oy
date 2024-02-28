@@ -10,7 +10,7 @@ namespace Email_Application.Serveces
 {
     public interface ILoginServece
     {
-        public Task<Login> SingUpAsync(SingUpDTO singUpDTO);
+        public Task SingUpAsync(SingUpDTO singUpDTO);
         public Task<Login> SingInAsync(LoginDTO loginDTO);
         public Task<Login> CheckPassword(CHecPassword cHecPassword);
     }

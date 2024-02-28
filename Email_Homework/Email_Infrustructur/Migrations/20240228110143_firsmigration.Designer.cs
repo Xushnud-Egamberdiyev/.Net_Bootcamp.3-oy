@@ -11,8 +11,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Email_Infrustructur.Migrations
 {
     [DbContext(typeof(AddAplication))]
-    [Migration("20240227115646_hello")]
-    partial class hello
+    [Migration("20240228110143_firsmigration")]
+    partial class firsmigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
