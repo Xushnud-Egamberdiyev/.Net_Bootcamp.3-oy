@@ -8,7 +8,7 @@ namespace FileApiLesson.Domen.Entitys.Models
     public class UserProfile
     {
         public int Id { get; set; }
-
+        //Sardor
         [NotMapped]
         public IFormFile Picture { get; set; }
         public string FullName { get; set; }
