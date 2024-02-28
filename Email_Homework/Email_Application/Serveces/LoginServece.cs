@@ -3,13 +3,8 @@ using Email_Domen.Entity.Model;
 using Email_Infrustructur;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Mail;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
+using System.Net.Mail;
 
 namespace Email_Application.Serveces
 {
@@ -25,7 +20,7 @@ namespace Email_Application.Serveces
         }
         public async Task SingUpAsync(SingUpDTO singUpDTO)
         {
-            if(singUpDTO.Password != singUpDTO.confirmationcode)
+            if (singUpDTO.Password != singUpDTO.confirmationcode)
             {
                 throw new Exception("Email already exists");
             }
@@ -51,7 +46,7 @@ namespace Email_Application.Serveces
         {
             var model = await _context.Logins.FirstOrDefaultAsync(x => x.Email == loginDTO.Email && x.Password == loginDTO.Password);
 
-            if(model == null)
+            if (model == null)
                 return null;
 
             Random random = new Random();
@@ -97,7 +92,7 @@ namespace Email_Application.Serveces
                 return null;
 
             return model;
-            
+
 
         }
     }

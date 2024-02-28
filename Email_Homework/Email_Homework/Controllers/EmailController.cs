@@ -1,11 +1,15 @@
-﻿using Email_Application.Serveces;
+﻿using Email_Application.AuthServices;
+using Email_Application.Serveces;
+using Email_Domen.Entity.AuthModels;
 using Email_Domen.Entity.DTOs;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Email_Homework.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
+    [Authorize]
     public class EmailController : ControllerBase
     {
         private readonly ILoginServece _login;
@@ -17,7 +21,7 @@ namespace Email_Homework.Controllers
         [HttpPost]
         public async Task<IActionResult> SignUpAsync(SingUpDTO model)
         {
-             await _login.SingUpAsync(model);
+            await _login.SingUpAsync(model);
 
 
             return Ok("Success");
@@ -49,5 +53,11 @@ namespace Email_Homework.Controllers
             return BadRequest("Nimadir noto'g'ri bajarildi!");
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetMail()
+        {
+            return Ok("ooooooooooooooook");
+        }
+        
     }
 }
