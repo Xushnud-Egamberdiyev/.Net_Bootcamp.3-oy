@@ -12,7 +12,7 @@ namespace Email_Homework
             // Add services to the container.
 
             builder.Services.AddControllers();
-
+              
             builder.Services.AddApplication();
             builder.Services.AddInfrustructure(builder.Configuration);
 

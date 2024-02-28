@@ -5,6 +5,7 @@
         Teacher,
         Student,
         Admin,
-        Manager
+        Manager,
+        Person
     }
 }
