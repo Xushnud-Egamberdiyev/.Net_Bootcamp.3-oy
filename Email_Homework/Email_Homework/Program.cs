@@ -2,6 +2,7 @@ using Email_Application;
 using Email_Infrustructur;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using System.Text;
 
 
@@ -23,7 +24,38 @@ namespace Email_Homework
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            builder.Services.AddSwaggerGen(c =>
+            {
+                // Swagger versiyasini va ma'lumotlarini sozlaymiz
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Lesson Auth", Version = "v1.0.0", Description = "Lesson Auth API" });
+
+                // Xavfsizlik schema (Bearer) uchun OpenAPI ma'lumotlarini sozlaymiz
+                var securitySchema = new OpenApiSecurityScheme
+                {
+                    Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.Http,
+                    Scheme = "bearer",
+                    Reference = new OpenApiReference
+                    {
+                        Type = ReferenceType.SecurityScheme,
+                        Id = "Bearer"
+                    }
+                };
+
+                // Xavfsizlik schema-ni qo'shish
+                c.AddSecurityDefinition("Bearer", securitySchema);
+
+                // Xavfsizlik talablarini qo'shish
+                var securityRequirement = new OpenApiSecurityRequirement
+    {
+        { securitySchema, new[] { "Bearer" } }
+    };
+                c.AddSecurityRequirement(securityRequirement);
+            });
+
+
 
             //builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             //   .AddJwtBearer(
@@ -44,7 +76,7 @@ namespace Email_Homework
             //           };
             //       });
 
-                builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
        .AddJwtBearer(
            options =>
            {

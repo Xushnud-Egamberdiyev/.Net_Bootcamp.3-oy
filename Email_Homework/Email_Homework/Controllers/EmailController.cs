@@ -18,27 +18,27 @@ namespace Email_Homework.Controllers
         {
             _login = login;
         }
-        [HttpPost]
-        public async Task<IActionResult> SignUpAsync(SingUpDTO model)
-        {
-            await _login.SingUpAsync(model);
+        //[HttpPost]
+        //public async Task<IActionResult> SignUpAsync(SingUpDTO model)
+        //{
+        //    await _login.SingUpAsync(model);
 
 
-            return Ok("Success");
-        }
+        //    return Ok("Success");
+        //}
 
-        [HttpPost]
-        public async Task<IActionResult> SignInAsync([FromBody] LoginDTO model)
-        {
-            var verify = await _login.SingInAsync(model);
+        //[HttpPost]
+        //public async Task<IActionResult> SignInAsync([FromBody] LoginDTO model)
+        //{
+        //    var verify = await _login.SingInAsync(model);
 
-            if (verify != null)
-            {
-                return Ok("Iltimos, biz sizga yuborgan kodni keyingi api-ga kiriting \"");
-            }
+        //    if (verify != null)
+        //    {
+        //        return Ok("Iltimos, biz sizga yuborgan kodni keyingi api-ga kiriting \"");
+        //    }
 
-            return BadRequest("Siz topilmadingiz!\nAvval roʻyxatdan oʻting!");
-        }
+        //    return BadRequest("Siz topilmadingiz!\nAvval roʻyxatdan oʻting!");
+        //}
 
         [HttpPost]
         public async Task<IActionResult> SignInVerificationAsync(CHecPassword model)
