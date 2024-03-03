@@ -1,6 +1,8 @@
 ﻿using Email_Application.AuthServices;
+using Email_Application.IServer;
 using Email_Application.Serveces;
 using Microsoft.Extensions.DependencyInjection;
+
 
 namespace Email_Application
 {
@@ -8,7 +10,8 @@ namespace Email_Application
     {
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
-            services.AddScoped<ILoginServece, LoginServece>();
+            //services.AddScoped<ILoginServece, LoginServece>();
+            services.AddScoped<IUSerServices, UserServeces>();
             services.AddScoped<IAuthService, AuthService>();
             return services;
         }

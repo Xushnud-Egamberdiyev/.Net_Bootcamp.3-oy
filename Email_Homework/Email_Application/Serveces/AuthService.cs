@@ -1,16 +1,18 @@
-﻿using Email_Domen.Entity.AuthModels;
+﻿using Email_Application.AuthServices;
+using Email_Domen.Entity.AuthModels;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Text.Json;
+using System.Threading.Tasks;
 
-
-
-
-namespace Email_Application.AuthServices
+namespace Email_Application.Serveces
 {
     public class AuthService : IAuthService
     {
@@ -30,7 +32,7 @@ namespace Email_Application.AuthServices
             if (UserExits(user))
             {
                 var permissions = new List<int>();
-                if(user.Role == "Teacher")
+                if (user.Role == "Teacher")
                 {
                     permissions = new List<int>() { 1, 2, 3, 4 };
                 }
@@ -38,7 +40,7 @@ namespace Email_Application.AuthServices
                 {
                     permissions = new List<int>() { 5, 7, 3, 4 };
                 }
-                else if(user.Role == "Admin")
+                else if (user.Role == "Admin")
                 {
                     permissions = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
                 }
@@ -47,7 +49,7 @@ namespace Email_Application.AuthServices
 
                 // Foydalanuvchi uchun JWT ma'lumotlar to'plami yaratiladi
                 List<Claim> claims = new List<Claim>()
-        {   
+        {
             new Claim(ClaimTypes.Role , user.Role), // Foydalanuvchi huquqi
             new Claim("UserName", user.UserName), // Foydalanuvchi nomi
             new Claim("UserID", user.Id.ToString()), // Foydalanuvchi identifikatori
@@ -112,4 +114,3 @@ namespace Email_Application.AuthServices
         }
     }
 }
- 

@@ -1,5 +1,5 @@
 ﻿using Email_Application.AuthServices;
-using Email_Application.Serveces;
+using Email_Application.IServer;
 using Email_Domen.Entity.AuthModels;
 using Email_Domen.Entity.DTOs;
 using Microsoft.AspNetCore.Authorization;
@@ -40,24 +40,24 @@ namespace Email_Homework.Controllers
         //    return BadRequest("Siz topilmadingiz!\nAvval roʻyxatdan oʻting!");
         //}
 
-        [HttpPost]
-        public async Task<IActionResult> SignInVerificationAsync(CHecPassword model)
-        {
-            var verify = await _login.CheckPassword(model);
+        //[HttpPost]
+        //public async Task<IActionResult> SignInVerificationAsync(CHecPassword model)
+        //{
+        //    var verify = await _login.CheckPassword(model);
 
-            if (verify != null)
-            {
-                return Ok("Tabriklaymiz!\nSiz tizimga kirdingiz!");
-            }
+        //    if (verify != null)
+        //    {
+        //        return Ok("Tabriklaymiz!\nSiz tizimga kirdingiz!");
+        //    }
 
-            return BadRequest("Nimadir noto'g'ri bajarildi!");
-        }
+        //    return BadRequest("Nimadir noto'g'ri bajarildi!");
+        //}
 
-        [HttpGet]
-        public async Task<IActionResult> GetMail()
-        {
-            return Ok("ooooooooooooooook");
-        }
+        //[HttpGet]
+        //public async Task<IActionResult> GetMail()
+        //{
+        //    return Ok("ooooooooooooooook");
+        //}
         
     }
 }

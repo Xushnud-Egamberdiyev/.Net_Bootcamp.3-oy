@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Email_Application.IServer;
+using Email_Infrustructur.BaseRepositories;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -6,11 +8,17 @@ namespace Email_Infrustructur
 {
     public static class Infractructure
     {
-        public static IServiceCollection AddInfrustructure(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<AddAplication>(option =>
-            option.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<AddAplication>(options =>
+            {
+                options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"));
+
+            });
+
+            services.AddScoped<IUserRepository, UserRepository>();
             return services;
+
         }
 
     }
