@@ -15,10 +15,18 @@ namespace Email_Homework.Controllers.AuthCantrollers
             _authService = auth;
         }
         [HttpPost]
-        public IActionResult Login(User model)
+        public IActionResult Login( User model)
         {
-            var result = _authService.GenerateToken(model);
-            return Ok(result);
+            try
+            {
+                var result = _authService.GenerateToken(model);
+                return Ok(result);
+            }
+            catch
+            {
+                return BadRequest("Something went wrong");
+            }
+            
         }
 
 

@@ -1,5 +1,6 @@
 ﻿using Email_Application.AuthServices;
 using Email_Domen.Entity.AuthModels;
+using Email_Domen.Entity.Model;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -31,40 +32,47 @@ namespace Email_Application.Serveces
             // Foydalanuvchi autentifikatsiya amaliyoti muvaffaqiyatli bajarilganligi tekshiriladi
             if (UserExits(user))
             {
-                var permissions = new List<int>();
-                if (user.Role == "Teacher")
-                {
-                    permissions = new List<int>() { 1, 2, 3, 4 };
-                }
-                else if (user.Role == "Students")
-                {
-                    permissions = new List<int>() { 5, 7, 3, 4 };
-                }
-                else if (user.Role == "Admin")
-                {
-                    permissions = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-                }
+                var permissions = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+                
+               
 
                 var jsonContent = JsonSerializer.Serialize(permissions);
 
                 // Foydalanuvchi uchun JWT ma'lumotlar to'plami yaratiladi
                 List<Claim> claims = new List<Claim>()
-        {
-            new Claim(ClaimTypes.Role , user.Role), // Foydalanuvchi huquqi
-            new Claim("UserName", user.UserName), // Foydalanuvchi nomi
-            new Claim("UserID", user.Id.ToString()), // Foydalanuvchi identifikatori
-            new Claim("CreateDate", DateTime.UtcNow.ToString()),  // Foydalanuvchi yaratilgan vaqti
-            new Claim("Permissions", jsonContent)
-        };
+                {
+                    new Claim(ClaimTypes.Role , "Admin"), // Foydalanuvchi huquqi
+                    new Claim("UserName", user.FullName), // Foydalanuvchi nomi
+                    new Claim("UserID", user.Id.ToString()), // Foydalanuvchi identifikatori
+                    new Claim("CreateDate", DateTime.UtcNow.ToString()),  // Foydalanuvchi yaratilgan vaqti
+                    new Claim("Permissions", jsonContent)
+                };
 
                 // JWT yaratish uchun ma'lumotlar to'plami bilan yana bir marta funksiya chaqiriladi
                 return await GenerateToken(claims);
             }
             else
             {
-                // Foydalanuvchi autentifikatsiyadan o'tkazilganligi xabari
-                return "User Unauthorized 401";
+                var permissions = new List<int>() {6, 7, 8, 9, 10 };
+
+
+
+                var jsonContent = JsonSerializer.Serialize(permissions);
+
+                // Foydalanuvchi uchun JWT ma'lumotlar to'plami yaratiladi
+                List<Claim> claims = new List<Claim>()
+                {
+                    new Claim(ClaimTypes.Role , "User"), // Foydalanuvchi huquqi
+                    new Claim("UserName", user.FullName), // Foydalanuvchi nomi
+                    new Claim("UserID", user.Id.ToString()), // Foydalanuvchi identifikatori
+                    new Claim("CreateDate", DateTime.UtcNow.ToString()),  // Foydalanuvchi yaratilgan vaqti
+                    new Claim("Permissions", jsonContent)
+                };
+
+                // JWT yaratish uchun ma'lumotlar to'plami bilan yana bir marta funksiya chaqiriladi
+                return await GenerateToken(claims);
             }
+            
         }
 
 
@@ -105,12 +113,28 @@ namespace Email_Application.Serveces
 
         private bool UserExits(User model)
         {
-            var login = "admin";
-            var password = "123";
+            //var login = "admin";
+            //var password = "123";
 
-            if (model.Login == login && model.Password == password)
-                return true;
+            //if (model.Login == login && model.Password == password)
+            //    return true;
+            //return false;
+
+            var register = new List<Register>()
+            {
+                new Register() { Email = "x", Password = "7"},
+                new Register() {Email = "John7@gmail.com", Password = "John0"}
+            };
+
+            foreach (var item in register)
+            {
+                if (model.Email == item.Email && model.Password == item.Password)
+                {
+                    return true;
+                }
+            }
             return false;
+
         }
     }
 }

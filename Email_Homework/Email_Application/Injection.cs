@@ -11,6 +11,7 @@ namespace Email_Application
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
             //services.AddScoped<ILoginServece, LoginServece>();
+            services.AddScoped<IAdminServeces, AdminServeces>();
             services.AddScoped<IUSerServices, UserServeces>();
             services.AddScoped<IAuthService, AuthService>();
             return services;
