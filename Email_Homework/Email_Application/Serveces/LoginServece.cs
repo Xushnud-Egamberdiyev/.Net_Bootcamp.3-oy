@@ -14,8 +14,8 @@
 //namespace Email_Application.Serveces
 //{
 //    public class LoginServece : ILoginServece
-//    {
-//        private readonly 
+//    {   
+//        private readonly App
 //        private readonly IConfiguration _config;
 
 //        public LoginServece(AddAplication aplication, IConfiguration configuration)

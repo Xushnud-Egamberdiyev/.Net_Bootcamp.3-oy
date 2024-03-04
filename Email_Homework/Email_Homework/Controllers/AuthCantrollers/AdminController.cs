@@ -5,6 +5,7 @@ using Email_Domen.Entity.Enum;
 using Email_Domen.Entity.Model;
 using Email_Homework.Atributes;
 using Email_Homework.Attributes;
+using Email_Homework.ExternalServices;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,26 +15,26 @@ namespace Email_Homework.Controllers.AuthCantrollers
     [ApiController]
     public class AdminController : ControllerBase
     {
+        private readonly IWebHostEnvironment _env;
         private readonly IAdminServeces _adminServeces;
 
-        public AdminController(IAdminServeces services)
+        public AdminController(IAdminServeces services, IWebHostEnvironment env)
         {
             _adminServeces = services;
+            _env = env;
         }
 
         [HttpPost]
         [IdentityFilter(Permission.CreateAdmin)]
-        public async Task<DocModel> CreateAdmin([FromForm]DocDTO model)
+        public async Task<DocModel> CreateAdmin([FromForm]DocDTO model, FileModel formFile)
         {
-            try
-            {
-                var result = await _adminServeces.Create(model);
-                return result;
-            }
-            catch (Exception ex)
-            {
-                return new DocModel();
-            }
+            UserProfileExternalService service = new UserProfileExternalService(_env);
+
+            string picturePath = await service.AddPictureAndGetPath(formFile);
+
+            var result = _adminServeces.Create(model, picturePath).Result;
+
+            return result;
 
         }
         [HttpGet]
@@ -46,7 +47,7 @@ namespace Email_Homework.Controllers.AuthCantrollers
         [HttpGet]
         [IdentityFilter(Permission.GetAdminById)]
 
-        public async Task<ActionResult<DocDTO>> GetByIdAdmin([FromForm] int id)
+        public async Task<ActionResult<DocDTO>> GetByIdAdmin([FromForm]int id)
         {
             var result = await _adminServeces.GetById(id);
             return Ok(result);
@@ -55,9 +56,12 @@ namespace Email_Homework.Controllers.AuthCantrollers
         [HttpPut]
         [IdentityFilter(Permission.UpdateAdmin)]
 
-        public async Task<ActionResult<DocDTO>> UpdateAdmin([FromForm] int id,DocDTO model)
+        public async Task<ActionResult<DocDTO>> UpdateAdmin(int id, [FromForm] DocDTO model, FileModel file)
         {
-            var result = await _adminServeces.UpdateAsync(id,model);
+            UserProfileExternalService service = new UserProfileExternalService(_env);
+
+            string picturePath = await service.AddPictureAndGetPath(file);
+            var result = await _adminServeces.UpdateAsync(id,model, picturePath);
             return Ok(result);
         }
         [HttpDelete]

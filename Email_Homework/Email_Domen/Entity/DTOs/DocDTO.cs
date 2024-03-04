@@ -11,8 +11,7 @@ namespace Email_Domen.Entity.DTOs
     {
         public string FullName { get; set; }
         public string PhoneNumber { get; set; }
-        [JsonIgnore]
-        public DateTime Data { get; set; }
         public string Description { get; set; }
+
     }
 }

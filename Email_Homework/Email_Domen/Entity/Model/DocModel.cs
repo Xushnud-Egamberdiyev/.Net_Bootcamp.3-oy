@@ -13,5 +13,7 @@ namespace Email_Domen.Entity.Model
         public string PhoneNumber { get; set; }
         public DateTime Data { get; set; }
         public string Description { get; set; }
+        public string PicturePath { get; set; }
+
     }
 }

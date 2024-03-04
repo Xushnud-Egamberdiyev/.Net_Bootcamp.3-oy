@@ -1,6 +1,7 @@
 ﻿using Email_Application.IServer;
 using Email_Domen.Entity.DTOs;
 using Email_Domen.Entity.Model;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,14 +20,17 @@ namespace Email_Application.Serveces
         {
             _userRepository = userRepository;
         }
-        public async Task<DocModel> CreateAsync(DocDTO docDTO)
+        public async Task<DocModel> CreateAsync(DocDTO docDTO, string picturepath)
         {
+
             var model = new DocModel()
             {
                 FullName = docDTO.FullName,
                 PhoneNumber = docDTO.PhoneNumber,
                 Description = docDTO.Description,
-                Data = DateTime.UtcNow
+                Data = DateTime.UtcNow,
+                PicturePath = picturepath
+
             };
 
             var result = await _userRepository.Create(model);
@@ -54,21 +58,19 @@ namespace Email_Application.Serveces
             return model;
         }
 
-        public async Task<DocModel> UpdateAsync(int id,string fullname, DocDTO docDTO)
+        public async Task<DocModel> UpdateAsync(int id,string fullname, DocDTO docDTO, string picturepath)
         {
             var res = await _userRepository.GetByAny(x => x.Id == id && x.FullName == fullname);
 
             if (res != null)
             {
-                var model = new DocModel()
-                {
-                    FullName = res.FullName,
-                    PhoneNumber = res.PhoneNumber,
-                    Description = res.Description,
-                    Data = DateTime.UtcNow
-                };
+                res.FullName = docDTO.FullName;
+                res.PhoneNumber = docDTO.PhoneNumber;
+                res.Description = docDTO.Description;
+                res.Data = DateTime.UtcNow;
+                res.PicturePath = picturepath;
 
-                var result = await _userRepository.Update(model);
+                var result = await _userRepository.Update(res);
 
                 return result;
             }

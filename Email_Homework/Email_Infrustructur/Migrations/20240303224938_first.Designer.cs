@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Email_Infrustructur.Migrations
 {
     [DbContext(typeof(AddAplication))]
-    [Migration("20240303114448_firstmigration")]
-    partial class firstmigration
+    [Migration("20240303224938_first")]
+    partial class first
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -45,6 +45,10 @@ namespace Email_Infrustructur.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("PicturePath")
                         .IsRequired()
                         .HasColumnType("text");
 

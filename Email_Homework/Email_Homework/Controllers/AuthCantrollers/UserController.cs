@@ -3,7 +3,9 @@ using Email_Domen.Entity.DTOs;
 using Email_Domen.Entity.Enum;
 using Email_Domen.Entity.Model;
 using Email_Homework.Attributes;
+using Email_Homework.ExternalServices;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,27 +16,29 @@ namespace Email_Homework.Controllers.AuthCantrollers
     [Authorize]
     public class UserController : ControllerBase
     {
+        private readonly IWebHostEnvironment _env;
         private readonly IUSerServices _userSer;
 
-        public UserController(IUSerServices services)
+        public UserController(IUSerServices services, IWebHostEnvironment env)
         {
             _userSer = services;
+            _env = env;
         }
 
         [HttpPost]
         [IdentityFilter(Permission.CreateUser)]
-        public async Task<DocModel> CreateUser([FromForm] DocDTO model)
+        public async Task<DocModel> CreateUser([FromForm]DocDTO model, FileModel file)
         {
-            try
-            {
-                var result = await _userSer.CreateAsync(model);
-                return result;
-            }
-            catch (Exception ex)
-            {
-                return new DocModel();
-            }
+
+            UserProfileExternalService service = new UserProfileExternalService(_env);
+
+            string picturePath = await service.AddPictureAndGetPath(file);
+
+            var result = _userSer.CreateAsync(model, picturePath).Result;
+            return result;
+
             
+
         }
         [HttpGet]
         [IdentityFilter(Permission.GetUser)]
@@ -46,7 +50,7 @@ namespace Email_Homework.Controllers.AuthCantrollers
         [HttpGet]
         [IdentityFilter(Permission.GetUserById)]
 
-        public async Task<ActionResult<DocDTO>> GetByIdUser([FromForm] int id, string fullname)
+        public async Task<ActionResult<DocDTO>> GetByIdUser( [FromForm] int id, string fullname)
         {
             var result = await _userSer.GetById(fullname, id);
             return Ok(result);
@@ -55,9 +59,12 @@ namespace Email_Homework.Controllers.AuthCantrollers
         [HttpPut]
         [IdentityFilter(Permission.UpdateUSer)]
 
-        public async Task<ActionResult<DocDTO>> UpdateUser([FromForm] int id, string fullname, DocDTO model)
+        public async Task<ActionResult<DocDTO>> UpdateUser(int id,  string fullname,[FromForm] DocDTO model, FileModel file)
         {
-            var result = await _userSer.UpdateAsync(id, fullname, model);
+            UserProfileExternalService service = new UserProfileExternalService(_env);
+
+            string picturePath = await service.AddPictureAndGetPath(file);
+            var result = await _userSer.UpdateAsync(id, fullname, model, picturePath);
             return Ok(result);
         }
         [HttpDelete]

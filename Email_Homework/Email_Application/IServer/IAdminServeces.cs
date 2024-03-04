@@ -11,10 +11,10 @@ namespace Email_Application.IServer
 {
     public interface IAdminServeces
     {
-        Task<DocModel> Create(DocDTO docDTO);
+        Task<DocModel> Create(DocDTO docDTO, string picturepath);
         Task<DocModel> GetById(int id);
         Task<IEnumerable<DocModel>> GetAll();
         Task<bool> Delete(Expression<Func<DocModel, bool>> expression);
-        Task<DocModel> UpdateAsync(int id, DocDTO docDTO);
+        Task<DocModel> UpdateAsync(int id, DocDTO docDTO, string picturepath);
     }
 }

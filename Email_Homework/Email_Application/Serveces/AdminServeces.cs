@@ -19,14 +19,16 @@ namespace Email_Application.Serveces
         {
             _adminRepository = adminRepository;
         }
-        public async Task<DocModel> Create(DocDTO docDTO)
+        public async Task<DocModel> Create(DocDTO docDTO, string picturepath)
         {
             var model = new DocModel()
             {
                 FullName = docDTO.FullName,
                 PhoneNumber = docDTO.PhoneNumber,
                 Description = docDTO.Description,
-                Data = DateTime.UtcNow
+                Data = DateTime.UtcNow,
+                PicturePath = picturepath
+                
             };
 
             var result = await _adminRepository.Create(model);
@@ -54,21 +56,19 @@ namespace Email_Application.Serveces
             return model;
         }
 
-        public async Task<DocModel> UpdateAsync(int id, DocDTO docDTO)
+        public async Task<DocModel> UpdateAsync(int id, DocDTO docDTO, string picturepath)
         {
             var res = await _adminRepository.GetByAny(x => x.Id == id);
 
             if (res != null)
             {
-                var model = new DocModel()
-                {
-                    FullName = res.FullName,
-                    PhoneNumber = res.PhoneNumber,
-                    Description = res.Description,
-                    Data = DateTime.UtcNow
-                };
+                res.FullName = docDTO.FullName;
+                res.PhoneNumber = docDTO.PhoneNumber;
+                res.Description = docDTO.Description;
+                res.Data = DateTime.UtcNow;
+                res.PicturePath = picturepath;
 
-                var result = await _adminRepository.Update(model);
+                var result = await _adminRepository.Update(res);
 
                 return result;
             }
