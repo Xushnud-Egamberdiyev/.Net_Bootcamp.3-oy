@@ -1,5 +1,4 @@
 ﻿using Email_Domen.Entity.Enum;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System.Security.Claims;

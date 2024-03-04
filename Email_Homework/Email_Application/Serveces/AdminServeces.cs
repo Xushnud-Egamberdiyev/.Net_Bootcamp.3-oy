@@ -1,12 +1,7 @@
 ﻿using Email_Application.IServer;
 using Email_Domen.Entity.DTOs;
 using Email_Domen.Entity.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Email_Application.Serveces
 {
@@ -28,7 +23,7 @@ namespace Email_Application.Serveces
                 Description = docDTO.Description,
                 Data = DateTime.UtcNow,
                 PicturePath = picturepath
-                
+
             };
 
             var result = await _adminRepository.Create(model);
@@ -51,7 +46,7 @@ namespace Email_Application.Serveces
 
         public async Task<DocModel> GetById(int id)
         {
-            var model = await _adminRepository.GetByAny(x =>x.Id == id);
+            var model = await _adminRepository.GetByAny(x => x.Id == id);
 
             return model;
         }

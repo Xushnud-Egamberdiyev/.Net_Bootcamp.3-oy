@@ -1,6 +1,4 @@
 ﻿using Email_Homework.Controllers.AuthCantrollers;
-using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Mvc;
 
 namespace Email_Homework.ExternalServices
 {
@@ -10,7 +8,7 @@ namespace Email_Homework.ExternalServices
         public UserProfileExternalService(IWebHostEnvironment webHostEnvironment)
         {
             _env = webHostEnvironment;
-        }   
+        }
 
 
         public async Task<string> AddPictureAndGetPath(FileModel file)

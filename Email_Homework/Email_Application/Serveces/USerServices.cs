@@ -1,13 +1,7 @@
 ﻿using Email_Application.IServer;
 using Email_Domen.Entity.DTOs;
 using Email_Domen.Entity.Model;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Email_Application.Serveces
 {
@@ -58,7 +52,7 @@ namespace Email_Application.Serveces
             return model;
         }
 
-        public async Task<DocModel> UpdateAsync(int id,string fullname, DocDTO docDTO, string picturepath)
+        public async Task<DocModel> UpdateAsync(int id, string fullname, DocDTO docDTO, string picturepath)
         {
             var res = await _userRepository.GetByAny(x => x.Id == id && x.FullName == fullname);
 

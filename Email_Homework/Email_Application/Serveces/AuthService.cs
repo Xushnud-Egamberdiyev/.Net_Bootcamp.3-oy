@@ -3,15 +3,11 @@ using Email_Domen.Entity.AuthModels;
 using Email_Domen.Entity.Model;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace Email_Application.Serveces
 {
@@ -33,8 +29,8 @@ namespace Email_Application.Serveces
             if (UserExits(user))
             {
                 var permissions = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-                
-               
+
+
 
                 var jsonContent = JsonSerializer.Serialize(permissions);
 
@@ -53,7 +49,7 @@ namespace Email_Application.Serveces
             }
             else
             {
-                var permissions = new List<int>() {6, 7, 8, 9, 10 };
+                var permissions = new List<int>() { 6, 7, 8, 9, 10 };
 
 
 
@@ -72,7 +68,7 @@ namespace Email_Application.Serveces
                 // JWT yaratish uchun ma'lumotlar to'plami bilan yana bir marta funksiya chaqiriladi
                 return await GenerateToken(claims);
             }
-            
+
         }
 
 

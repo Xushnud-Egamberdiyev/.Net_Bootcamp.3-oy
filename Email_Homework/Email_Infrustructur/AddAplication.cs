@@ -9,6 +9,6 @@ namespace Email_Infrustructur
         {
             Database.Migrate();
         }
-        public DbSet<DocModel> Document {  get; set; }
+        public DbSet<DocModel> Document { get; set; }
     }
 }

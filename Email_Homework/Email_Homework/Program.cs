@@ -104,27 +104,27 @@ namespace Email_Homework
 
 
         }
-            public static TokenValidationParameters GetTokenValidationParameters(IConfiguration configuration)
+        public static TokenValidationParameters GetTokenValidationParameters(IConfiguration configuration)
+        {
+            return new TokenValidationParameters()
             {
-                return new TokenValidationParameters()
-                {
-                    // Token issuerini tekshirish
-                    ValidateIssuer = true,
-                    // Tokenni qabul qiluvchini tekshirish
-                    ValidateAudience = true,
-                    // Token muddatini tekshirish
-                    ValidateLifetime = true,
-                    // Token imzosi tekshirish
-                    ValidateIssuerSigningKey = true,
-                    // Tokenning yaroqligi (issuer)
-                    ValidIssuer = configuration["JWT:ValidIssuer"],
-                    // Tokenni qabul qiluvchi (audience)
-                    ValidAudience = configuration["JWT:ValidAudience"],
-                    // Token imzolash uchun xavfsizlik kaliti (key)
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWT:Secret"])),
-                    // Vaqt farqini belgilash (Zero, bu orqali vaqt farqi bo'lmaydi)
-                    ClockSkew = TimeSpan.Zero,
-                };
-            }
+                // Token issuerini tekshirish
+                ValidateIssuer = true,
+                // Tokenni qabul qiluvchini tekshirish
+                ValidateAudience = true,
+                // Token muddatini tekshirish
+                ValidateLifetime = true,
+                // Token imzosi tekshirish
+                ValidateIssuerSigningKey = true,
+                // Tokenning yaroqligi (issuer)
+                ValidIssuer = configuration["JWT:ValidIssuer"],
+                // Tokenni qabul qiluvchi (audience)
+                ValidAudience = configuration["JWT:ValidAudience"],
+                // Token imzolash uchun xavfsizlik kaliti (key)
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWT:Secret"])),
+                // Vaqt farqini belgilash (Zero, bu orqali vaqt farqi bo'lmaydi)
+                ClockSkew = TimeSpan.Zero,
+            };
+        }
     }
 }

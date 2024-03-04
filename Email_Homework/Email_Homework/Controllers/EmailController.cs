@@ -1,7 +1,4 @@
-﻿using Email_Application.AuthServices;
-using Email_Application.IServer;
-using Email_Domen.Entity.AuthModels;
-using Email_Domen.Entity.DTOs;
+﻿using Email_Application.IServer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -58,6 +55,6 @@ namespace Email_Homework.Controllers
         //{
         //    return Ok("ooooooooooooooook");
         //}
-        
+
     }
 }

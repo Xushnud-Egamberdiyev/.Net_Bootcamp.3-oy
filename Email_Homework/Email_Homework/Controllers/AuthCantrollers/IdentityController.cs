@@ -15,7 +15,7 @@ namespace Email_Homework.Controllers.AuthCantrollers
             _authService = auth;
         }
         [HttpPost]
-        public IActionResult Login( User model)
+        public IActionResult Login(User model)
         {
             try
             {
@@ -26,10 +26,9 @@ namespace Email_Homework.Controllers.AuthCantrollers
             {
                 return BadRequest("Something went wrong");
             }
-            
+
         }
 
 
     }
 }
- 

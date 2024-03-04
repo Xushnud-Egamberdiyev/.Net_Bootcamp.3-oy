@@ -1,12 +1,9 @@
 ﻿using Email_Application.IServer;
-using Email_Application.Serveces;
 using Email_Domen.Entity.DTOs;
 using Email_Domen.Entity.Enum;
 using Email_Domen.Entity.Model;
-using Email_Homework.Atributes;
 using Email_Homework.Attributes;
 using Email_Homework.ExternalServices;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Email_Homework.Controllers.AuthCantrollers
@@ -26,7 +23,7 @@ namespace Email_Homework.Controllers.AuthCantrollers
 
         [HttpPost]
         [IdentityFilter(Permission.CreateAdmin)]
-        public async Task<DocModel> CreateAdmin([FromForm]DocDTO model, FileModel formFile)
+        public async Task<DocModel> CreateAdmin([FromForm] DocDTO model, FileModel formFile)
         {
             UserProfileExternalService service = new UserProfileExternalService(_env);
 
@@ -47,7 +44,7 @@ namespace Email_Homework.Controllers.AuthCantrollers
         [HttpGet]
         [IdentityFilter(Permission.GetAdminById)]
 
-        public async Task<ActionResult<DocDTO>> GetByIdAdmin([FromForm]int id)
+        public async Task<ActionResult<DocDTO>> GetByIdAdmin([FromForm] int id)
         {
             var result = await _adminServeces.GetById(id);
             return Ok(result);
@@ -61,7 +58,7 @@ namespace Email_Homework.Controllers.AuthCantrollers
             UserProfileExternalService service = new UserProfileExternalService(_env);
 
             string picturePath = await service.AddPictureAndGetPath(file);
-            var result = await _adminServeces.UpdateAsync(id,model, picturePath);
+            var result = await _adminServeces.UpdateAsync(id, model, picturePath);
             return Ok(result);
         }
         [HttpDelete]
