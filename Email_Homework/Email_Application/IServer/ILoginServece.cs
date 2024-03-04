@@ -5,8 +5,8 @@ namespace Email_Application.IServer
 {
     public interface ILoginServece
     {
-        public Task SingUpAsync(SingUpDTO singUpDTO);
+        public Task<string> SingUpAsync(SingUpDTO singUpDTO);
         public Task<Login> SingInAsync(LoginDTO loginDTO);
-        public Task<Login> CheckPassword(CHecPassword cHecPassword);
+        public Task<string> CheckPassword(UserChecDTO user);
     }
 }

@@ -3,9 +3,9 @@ using Email_Domen.Entity.Model;
 
 namespace Email_Infrustructur.BaseRepositories
 {
-    public class AdminRepository : BaseRepository<DocModel>, IAdminRepository
+    public class LoginRepository : BaseRepository<Login>, IloginRepository
     {
-        public AdminRepository(AddAplication context) : base(context)
+        public LoginRepository(AddAplication context) : base(context)
         {
         }
     }

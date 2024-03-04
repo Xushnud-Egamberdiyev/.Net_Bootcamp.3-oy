@@ -5,12 +5,10 @@ namespace Email_Domen.Entity.Model
 {
     public class Login
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         [EmailAddress]
-        public string Email { get; set; }
-        public string Password { get; set; }
-        [Required]
-        [JsonIgnore]
-        public string SendCode { get; set; } = string.Empty;
+        public string? Email { get; set; }
+        public string? Password { get; set; }
+        public string? SendCode { get; set; }
     }
 }

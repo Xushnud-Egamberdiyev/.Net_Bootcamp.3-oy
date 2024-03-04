@@ -1,5 +1,5 @@
 ﻿using Email_Application.AuthServices;
-using Email_Domen.Entity.AuthModels;
+using Email_Domen.Entity.DTOs;
 using Email_Domen.Entity.Model;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -19,7 +19,7 @@ namespace Email_Application.Serveces
         {
             _configuration = configuration;
         }
-        public async Task<string> GenerateToken(User user)
+        public async Task<string> GenerateToken(UserChecDTO user)
         {
             // Foydalanuvchi mavjudligi tekshiriladi
             if (user == null)
@@ -107,14 +107,8 @@ namespace Email_Application.Serveces
         }
 
 
-        private bool UserExits(User model)
+        private bool UserExits(UserChecDTO model)
         {
-            //var login = "admin";
-            //var password = "123";
-
-            //if (model.Login == login && model.Password == password)
-            //    return true;
-            //return false;
 
             var register = new List<Register>()
             {

@@ -2,7 +2,7 @@
 {
     public class CHecPassword
     {
-        public string Email { get; set; }
-        public string ChecPassword { get; set; }
+        public string? Email { get; set; }
+        public string? ChecPassword { get; set; }
     }
 }

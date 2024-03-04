@@ -9,10 +9,10 @@ namespace Email_Infrustructur.BaseRepositories
         private readonly AddAplication _context;
         private readonly DbSet<T> _dbSet;
 
-        public BaseRepository(AddAplication context, DbSet<T> dbset)
+        public BaseRepository(AddAplication context)
         {
             _context = context;
-            _dbSet = dbset;
+            _dbSet = _context.Set<T>(); 
         }
 
         public async Task<T> Create(T entity)

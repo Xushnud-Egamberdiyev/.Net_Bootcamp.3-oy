@@ -53,6 +53,28 @@ namespace Email_Infrustructur.Migrations
 
                     b.ToTable("Document");
                 });
+
+            modelBuilder.Entity("Email_Domen.Entity.Model.Login", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("text");
+
+                    b.Property<string>("SendCode")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Logins");
+                });
 #pragma warning restore 612, 618
         }
     }

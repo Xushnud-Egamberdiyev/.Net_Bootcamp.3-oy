@@ -2,7 +2,7 @@
 using Email_Domen.Entity.DTOs;
 using Email_Domen.Entity.Enum;
 using Email_Domen.Entity.Model;
-using Email_Homework.Attributes;
+using Email_Homework.Atributes;
 using Email_Homework.ExternalServices;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -24,7 +24,7 @@ namespace Email_Homework.Controllers.AuthCantrollers
         }
 
         [HttpPost]
-        [IdentityFilter(Permission.CreateUser)]
+        [IdentityFilterAtribute(Permission.CreateUser)]
         public async Task<DocModel> CreateUser([FromForm] DocDTO model, FileModel file)
         {
 
@@ -39,14 +39,14 @@ namespace Email_Homework.Controllers.AuthCantrollers
 
         }
         [HttpGet]
-        [IdentityFilter(Permission.GetUser)]
+        [IdentityFilterAtribute(Permission.GetUser)]
         public async Task<ActionResult<IEnumerable<DocDTO>>> GetAllUser([FromForm] string fullname)
         {
             var result = await _userSer.GetAllAsync(fullname);
             return Ok(result);
         }
         [HttpGet]
-        [IdentityFilter(Permission.GetUserById)]
+        [IdentityFilterAtribute(Permission.GetUserById)]
 
         public async Task<ActionResult<DocDTO>> GetByIdUser([FromForm] int id, string fullname)
         {
@@ -55,7 +55,7 @@ namespace Email_Homework.Controllers.AuthCantrollers
         }
 
         [HttpPut]
-        [IdentityFilter(Permission.UpdateUSer)]
+        [IdentityFilterAtribute(Permission.UpdateUSer)]
 
         public async Task<ActionResult<DocDTO>> UpdateUser(int id, string fullname, [FromForm] DocDTO model, FileModel file)
         {
@@ -66,7 +66,7 @@ namespace Email_Homework.Controllers.AuthCantrollers
             return Ok(result);
         }
         [HttpDelete]
-        [IdentityFilter(Permission.DeleteUser)]
+        [IdentityFilterAtribute(Permission.DeleteUser)]
 
         public async Task<ActionResult<string>> DeleteUSer([FromForm] int id)
         {

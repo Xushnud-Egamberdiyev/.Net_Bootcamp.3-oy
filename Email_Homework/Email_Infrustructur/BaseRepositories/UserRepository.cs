@@ -5,7 +5,7 @@ namespace Email_Infrustructur.BaseRepositories
 {
     public class UserRepository : BaseRepository<DocModel>, IUserRepository
     {
-        public UserRepository(AddAplication context) : base(context, context.Set<DocModel>())
+        public UserRepository(AddAplication context) : base(context)
         {
         }
     }

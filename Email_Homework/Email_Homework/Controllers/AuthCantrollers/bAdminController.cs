@@ -2,7 +2,7 @@
 using Email_Domen.Entity.DTOs;
 using Email_Domen.Entity.Enum;
 using Email_Domen.Entity.Model;
-using Email_Homework.Attributes;
+using Email_Homework.Atributes;
 using Email_Homework.ExternalServices;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,7 +22,7 @@ namespace Email_Homework.Controllers.AuthCantrollers
         }
 
         [HttpPost]
-        [IdentityFilter(Permission.CreateAdmin)]
+        [IdentityFilterAtribute(Permission.CreateAdmin)]
         public async Task<DocModel> CreateAdmin([FromForm] DocDTO model, FileModel formFile)
         {
             UserProfileExternalService service = new UserProfileExternalService(_env);
@@ -35,14 +35,14 @@ namespace Email_Homework.Controllers.AuthCantrollers
 
         }
         [HttpGet]
-        [IdentityFilter(Permission.GetAdmin)]
+        [IdentityFilterAtribute(Permission.GetAdmin)]
         public async Task<ActionResult<IEnumerable<DocDTO>>> GetAllAdmin()
         {
             var result = await _adminServeces.GetAll();
             return Ok(result);
         }
         [HttpGet]
-        [IdentityFilter(Permission.GetAdminById)]
+        [IdentityFilterAtribute(Permission.GetAdminById)]
 
         public async Task<ActionResult<DocDTO>> GetByIdAdmin([FromForm] int id)
         {
@@ -51,7 +51,7 @@ namespace Email_Homework.Controllers.AuthCantrollers
         }
 
         [HttpPut]
-        [IdentityFilter(Permission.UpdateAdmin)]
+        [IdentityFilterAtribute(Permission.UpdateAdmin)]
 
         public async Task<ActionResult<DocDTO>> UpdateAdmin(int id, [FromForm] DocDTO model, FileModel file)
         {
@@ -62,7 +62,7 @@ namespace Email_Homework.Controllers.AuthCantrollers
             return Ok(result);
         }
         [HttpDelete]
-        [IdentityFilter(Permission.DeleteAdmin)]
+        [IdentityFilterAtribute(Permission.DeleteAdmin)]
 
         public async Task<ActionResult<string>> DeleteAdmin([FromForm] int id)
         {

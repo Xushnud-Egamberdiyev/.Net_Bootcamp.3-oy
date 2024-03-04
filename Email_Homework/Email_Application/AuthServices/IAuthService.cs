@@ -1,9 +1,9 @@
-﻿using Email_Domen.Entity.AuthModels;
+﻿using Email_Domen.Entity.DTOs;
 
 namespace Email_Application.AuthServices
 {
     public interface IAuthService
     {
-        public Task<string> GenerateToken(User user);
+        public Task<string> GenerateToken(UserChecDTO user);
     }
 }

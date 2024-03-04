@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Email_Infrustructur.Migrations
 {
     [DbContext(typeof(AddAplication))]
-    [Migration("20240303224938_first")]
-    partial class first
+    [Migration("20240304195650_firstMigration")]
+    partial class firstMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -55,6 +55,28 @@ namespace Email_Infrustructur.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Document");
+                });
+
+            modelBuilder.Entity("Email_Domen.Entity.Model.Login", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("text");
+
+                    b.Property<string>("SendCode")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Logins");
                 });
 #pragma warning restore 612, 618
         }

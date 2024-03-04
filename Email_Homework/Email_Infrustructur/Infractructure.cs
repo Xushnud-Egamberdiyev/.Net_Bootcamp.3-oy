@@ -18,6 +18,7 @@ namespace Email_Infrustructur
 
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IAdminRepository, AdminRepository>();
+            services.AddScoped<IloginRepository, LoginRepository>();
             return services;
 
         }

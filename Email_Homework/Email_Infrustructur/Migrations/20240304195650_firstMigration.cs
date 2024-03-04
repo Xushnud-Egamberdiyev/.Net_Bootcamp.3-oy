@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
@@ -6,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Email_Infrustructur.Migrations
 {
     /// <inheritdoc />
-    public partial class first : Migration
+    public partial class firstMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -27,6 +28,21 @@ namespace Email_Infrustructur.Migrations
                 {
                     table.PrimaryKey("PK_Document", x => x.Id);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "Logins",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Email = table.Column<string>(type: "text", nullable: true),
+                    Password = table.Column<string>(type: "text", nullable: true),
+                    SendCode = table.Column<string>(type: "text", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Logins", x => x.Id);
+                });
         }
 
         /// <inheritdoc />
@@ -34,6 +50,9 @@ namespace Email_Infrustructur.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Document");
+
+            migrationBuilder.DropTable(
+                name: "Logins");
         }
     }
 }
