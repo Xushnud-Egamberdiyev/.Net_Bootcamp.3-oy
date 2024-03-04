@@ -10,12 +10,12 @@ namespace Email_Homework.Controllers.AuthCantrollers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
-    public class AdminController : ControllerBase
+    public class bAdminController : ControllerBase
     {
         private readonly IWebHostEnvironment _env;
         private readonly IAdminServeces _adminServeces;
 
-        public AdminController(IAdminServeces services, IWebHostEnvironment env)
+        public bAdminController(IAdminServeces services, IWebHostEnvironment env)
         {
             _adminServeces = services;
             _env = env;

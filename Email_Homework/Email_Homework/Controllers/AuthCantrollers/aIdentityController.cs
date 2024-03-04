@@ -6,11 +6,11 @@ namespace Email_Homework.Controllers.AuthCantrollers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class IdentityController : ControllerBase
+    public class aIdentityController : ControllerBase
     {
         private readonly IAuthService _authService;
 
-        public IdentityController(IAuthService auth)
+        public aIdentityController(IAuthService auth)
         {
             _authService = auth;
         }

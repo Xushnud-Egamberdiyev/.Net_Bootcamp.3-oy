@@ -12,12 +12,12 @@ namespace Email_Homework.Controllers.AuthCantrollers
     [Route("api/[controller]/[action]")]
     [ApiController]
     [Authorize]
-    public class UserController : ControllerBase
+    public class cUserController : ControllerBase
     {
         private readonly IWebHostEnvironment _env;
         private readonly IUSerServices _userSer;
 
-        public UserController(IUSerServices services, IWebHostEnvironment env)
+        public cUserController(IUSerServices services, IWebHostEnvironment env)
         {
             _userSer = services;
             _env = env;
